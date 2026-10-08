@@ -231,6 +231,7 @@
   .unit-wrap{ position:relative; isolation:isolate; }
   .unit-grid{ position:absolute; inset:-10% -20%; z-index:-1; background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:48px 48px; mask-image:radial-gradient(ellipse at center, #000 20%, transparent 70%); -webkit-mask-image:radial-gradient(ellipse at center, #000 20%, transparent 70%); opacity:.6; }
   .unit{ position:relative; }
+  .concept{ position:absolute; left:0; top:0; z-index:1; font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; color:var(--muted); border:1px solid var(--line-2); padding:5px 9px; background:var(--glass); }
   .unit-img{ width:100%; height:auto; filter:drop-shadow(0 40px 60px rgba(0,0,0,.6)); }
   .hot{ position:absolute; transform:translate(-50%,-50%); width:28px; height:28px; border-radius:50%; display:grid; place-items:center; }
   .hot::before{ content:""; width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-bg); }
@@ -252,7 +253,7 @@
   .deploy h2{ font-size:clamp(52px,9vw,140px); margin-top:16px; }
   .deploy h2 span{ color:var(--accent); }
   .deploy-row{ display:flex; justify-content:space-between; align-items:end; gap:24px; flex-wrap:wrap; margin-top:20px; }
-  .deploy-row p{ max-width:46ch; }
+  .deploy-row p{ max-width:60ch; }
   .deploy-tags{ display:flex; gap:8px; flex-wrap:wrap; }
   .tag{ font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; padding:6px 10px; border:1px solid var(--line-2); background:var(--glass); }
 
@@ -582,6 +583,7 @@
     <div class="unit-wrap rv">
       <div class="unit-grid" aria-hidden="true"></div>
       <div class="unit">
+        <span class="concept">설계 개념도</span>
         <img class="unit-img" src="assets/product-render-unit.png" alt="22G2 모듈러 생산 유닛 CAD 렌더링. 왼쪽 컨테이너에 적층제조 설비, 오른쪽 컨테이너에 로봇 조립 셀이 있다." loading="lazy" width="1656" height="950">
         <button class="hot" style="left:27%;top:52%" aria-label="적층제조 셀"><span class="tip"><small>MODULE A</small>적층제조 셀 · 3D 프린터</span></button>
         <button class="hot" style="left:76%;top:28%" aria-label="로봇 자동 조립 셀"><span class="tip"><small>MODULE B</small>로봇 자동 조립 셀</span></button>
@@ -605,7 +607,7 @@
     <p class="eyebrow">Field Deployment</p>
     <h2 class="display">Deploy<br>anywhere<span>.</span></h2>
     <div class="deploy-row">
-      <p>생산 유닛을 전방 거점에 그대로 전개합니다. 공장이 부대를 따라 이동합니다.</p>
+      <p>생산 유닛을 전방 거점에 그대로 전개합니다.</p>
       <div class="deploy-tags"><span class="tag">FORWARD BASE</span><span class="tag">AIRFIELD</span><span class="tag">TRAINING SITE</span></div>
     </div>
   </div>
@@ -619,7 +621,7 @@
         <p class="eyebrow">Project Gaecheon · 開天</p>
         <h2 class="title">국방 드론 통합 생태계<br>구축 및 실증</h2>
       </div>
-      <p class="lede">설계부터 검증까지 6단계를 하나의 순환 구조로 연결해, 실전 데이터가 다시 설계로 피드백되는 체계를 만듭니다.</p>
+      <p class="lede">설계·제조·시험·배치·훈련·피드백의 6단계를 하나의 순환 구조로 연결합니다. 실전 운용 데이터가 곧바로 설계로 돌아와, 다음 기체를 더 빠르고 정확하게 만드는 체계입니다.</p>
     </div>
 
     <div class="cycle">
@@ -664,7 +666,7 @@
     <div class="sec-head">
       <div>
         <p class="eyebrow">Scaling-Up Roadmap</p>
-        <h2 class="title">2035년, K-Defense 드론<br>생태계를 주도하는 기업으로</h2>
+        <h2 class="title">2035년, K-Defense 드론<br>생태계 선도 기업으로</h2>
       </div>
       <p class="lede">파일럿(훈련·평가) → 조달·센터 확장 → 스케일업 순으로 성장하며, 국내 조달을 발판으로 해외 수출 패키지를 준비합니다.</p>
     </div>
@@ -672,19 +674,19 @@
     <div class="road">
       <div class="phase rv">
         <div class="bar-area"><div class="bar" style="--h:33%"><span>100억<small>VALUATION</small></span></div></div>
-        <div class="phase-info"><span class="mono">Startup</span><div class="yr">2025 – 2026</div><h4>창업팀 구성 &amp; MVP</h4><p>포천 드론 허브 기반 MVP 착수, 민·군 대상 교육 프로그램 개발</p></div>
+        <div class="phase-info"><span class="mono">Startup</span><div class="yr">2025 – 2026</div><h4>창업팀 구성 &amp; MVP</h4><p>포천 허브 MVP · 민·군 교육 개발</p></div>
       </div>
       <div class="phase rv">
         <div class="bar-area"><div class="bar" style="--h:57%"><span>500억<small>VALUATION</small></span></div></div>
-        <div class="phase-info"><span class="mono">R&amp;D &amp; IP</span><div class="yr">2027</div><h4>드론 파운드리 구축</h4><p>군 기관 연계 확장, 지능형 드론 파운드리 구축, 특허 출원 및 PoC 완료</p></div>
+        <div class="phase-info"><span class="mono">R&amp;D &amp; IP</span><div class="yr">2027</div><h4>드론 파운드리 구축</h4><p>드론 파운드리 구축 · 특허 · PoC</p></div>
       </div>
       <div class="phase rv">
         <div class="bar-area"><div class="bar" style="--h:83%"><span>3,000억<small>VALUATION</small></span></div></div>
-        <div class="phase-info"><span class="mono">Scale-up</span><div class="yr">2028 – 2030</div><h4>조달 계약 본격화</h4><p>국내 방산 조달 확대, K-Defense 수출 패키지 및 플랫폼 확장</p></div>
+        <div class="phase-info"><span class="mono">Scale-up</span><div class="yr">2028 – 2030</div><h4>조달 계약 본격화</h4><p>방산 조달 확대 · 수출 패키지</p></div>
       </div>
       <div class="phase rv">
         <div class="bar-area"><div class="bar" style="--h:100%"><span>1조+<small>VALUATION</small></span></div></div>
-        <div class="phase-info"><span class="mono">M&amp;A Exit</span><div class="yr">2031 –</div><h4>전략적 매각 · 글로벌 확장</h4><p>국내 방산 대기업과의 전략적 M&amp;A를 통한 글로벌 확장</p></div>
+        <div class="phase-info"><span class="mono">M&amp;A Exit</span><div class="yr">2031 –</div><h4>전략적 M&amp;A · 글로벌 확장</h4><p>글로벌 확장을 위한 전략적 자금 유치 M&amp;A</p></div>
       </div>
     </div>
     <p class="mono scale-note">목표 기업가치 · 막대 높이는 로그 스케일</p>
@@ -774,7 +776,7 @@
     <div class="sec-head">
       <div>
         <p class="eyebrow">Careers</p>
-        <h2 class="title">국가 안보의 실행 속도를<br>함께 설계할 사람을 찾습니다</h2>
+        <h2 class="title">국가 안보의 속도를 함께<br>설계할 동료를 찾습니다</h2>
       </div>
       <p class="lede">현재 특정 채용 공고는 준비 중입니다. 관심 있는 포지션이나 협업 제안이 있다면 contact@keonix.co.kr 로 자유롭게 연락해 주세요.</p>
     </div>

@@ -231,6 +231,7 @@
   .unit-wrap{ position:relative; isolation:isolate; }
   .unit-grid{ position:absolute; inset:-10% -20%; z-index:-1; background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:48px 48px; mask-image:radial-gradient(ellipse at center, #000 20%, transparent 70%); -webkit-mask-image:radial-gradient(ellipse at center, #000 20%, transparent 70%); opacity:.6; }
   .unit{ position:relative; }
+  .concept{ position:absolute; left:0; top:0; z-index:1; font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; color:var(--muted); border:1px solid var(--line-2); padding:5px 9px; background:var(--glass); }
   .unit-img{ width:100%; height:auto; filter:drop-shadow(0 40px 60px rgba(0,0,0,.6)); }
   .hot{ position:absolute; transform:translate(-50%,-50%); width:28px; height:28px; border-radius:50%; display:grid; place-items:center; }
   .hot::before{ content:""; width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-bg); }
@@ -252,7 +253,7 @@
   .deploy h2{ font-size:clamp(52px,9vw,140px); margin-top:16px; }
   .deploy h2 span{ color:var(--accent); }
   .deploy-row{ display:flex; justify-content:space-between; align-items:end; gap:24px; flex-wrap:wrap; margin-top:20px; }
-  .deploy-row p{ max-width:46ch; }
+  .deploy-row p{ max-width:60ch; }
   .deploy-tags{ display:flex; gap:8px; flex-wrap:wrap; }
   .tag{ font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; padding:6px 10px; border:1px solid var(--line-2); background:var(--glass); }
 
@@ -582,6 +583,7 @@
     <div class="unit-wrap rv">
       <div class="unit-grid" aria-hidden="true"></div>
       <div class="unit">
+        <span class="concept">CONCEPT RENDER</span>
         <img class="unit-img" src="../assets/product-render-unit.png" alt="CAD render of the 22G2 modular production unit: additive manufacturing equipment in the left container, a robotic assembly cell in the right." loading="lazy" width="1656" height="950">
         <button class="hot" style="left:27%;top:52%" aria-label="Additive manufacturing cell"><span class="tip"><small>MODULE A</small>Additive manufacturing cell · 3D printers</span></button>
         <button class="hot" style="left:76%;top:28%" aria-label="Robotic assembly cell"><span class="tip"><small>MODULE B</small>Robotic assembly cell</span></button>
@@ -605,7 +607,7 @@
     <p class="eyebrow">Field Deployment</p>
     <h2 class="display">Deploy<br>anywhere<span>.</span></h2>
     <div class="deploy-row">
-      <p>The production unit deploys straight to forward positions. The factory moves with the troops.</p>
+      <p>Deploys straight to forward positions.</p>
       <div class="deploy-tags"><span class="tag">FORWARD BASE</span><span class="tag">AIRFIELD</span><span class="tag">TRAINING SITE</span></div>
     </div>
   </div>
@@ -619,7 +621,7 @@
         <p class="eyebrow">Project Gaecheon · 開天</p>
         <h2 class="title">Building and validating an integrated<br>defense drone ecosystem</h2>
       </div>
-      <p class="lede">Six stages, from design to validation, connected in a single loop, so real-world operational data feeds straight back into design.</p>
+      <p class="lede">Six stages, from design to feedback, run as one loop. Real operational data flows straight back into design, so every airframe improves.</p>
     </div>
 
     <div class="cycle">
@@ -664,7 +666,7 @@
     <div class="sec-head">
       <div>
         <p class="eyebrow">Scaling-Up Roadmap</p>
-        <h2 class="title">By 2035, a leader of the<br>K-Defense drone ecosystem</h2>
+        <h2 class="title">By 2035, leading<br>K-Defense drones</h2>
       </div>
       <p class="lede">We grow from pilot (training &amp; evaluation) → procurement &amp; center expansion → scale-up, using domestic procurement as a springboard for export packages.</p>
     </div>
@@ -672,19 +674,19 @@
     <div class="road">
       <div class="phase rv">
         <div class="bar-area"><div class="bar" style="--h:33%"><span>KRW 10B<small>VALUATION</small></span></div></div>
-        <div class="phase-info"><span class="mono">Startup</span><div class="yr">2025 – 2026</div><h4>Founding Team &amp; MVP</h4><p>Launch MVP at the Pocheon Drone Hub; develop training programs for civilian and military audiences</p></div>
+        <div class="phase-info"><span class="mono">Startup</span><div class="yr">2025 – 2026</div><h4>Founding Team &amp; MVP</h4><p>Pocheon hub MVP · training programs</p></div>
       </div>
       <div class="phase rv">
         <div class="bar-area"><div class="bar" style="--h:57%"><span>KRW 50B<small>VALUATION</small></span></div></div>
-        <div class="phase-info"><span class="mono">R&amp;D &amp; IP</span><div class="yr">2027</div><h4>Build the Drone Foundry</h4><p>Expand partnerships with military institutions, build the Intelligent Drone Foundry, file patents, and complete PoC</p></div>
+        <div class="phase-info"><span class="mono">R&amp;D &amp; IP</span><div class="yr">2027</div><h4>Build the Drone Foundry</h4><p>Drone foundry · patents · PoC</p></div>
       </div>
       <div class="phase rv">
         <div class="bar-area"><div class="bar" style="--h:83%"><span>KRW 300B<small>VALUATION</small></span></div></div>
-        <div class="phase-info"><span class="mono">Scale-up</span><div class="yr">2028 – 2030</div><h4>Full-Scale Procurement Contracts</h4><p>Expand domestic defense procurement; build K-Defense export packages and extend the platform</p></div>
+        <div class="phase-info"><span class="mono">Scale-up</span><div class="yr">2028 – 2030</div><h4>Full-Scale Procurement Contracts</h4><p>Defense procurement · export packages</p></div>
       </div>
       <div class="phase rv">
         <div class="bar-area"><div class="bar" style="--h:100%"><span>KRW 1T+<small>VALUATION</small></span></div></div>
-        <div class="phase-info"><span class="mono">M&amp;A Exit</span><div class="yr">2031 –</div><h4>Strategic Exit · Global Expansion</h4><p>Global expansion through strategic M&amp;A with a major Korean defense company</p></div>
+        <div class="phase-info"><span class="mono">M&amp;A Exit</span><div class="yr">2031 –</div><h4>Strategic M&amp;A · Global Expansion</h4><p>Strategic funding M&amp;A for global growth</p></div>
       </div>
     </div>
     <p class="mono scale-note">Target valuation · bar height on a log scale</p>
@@ -774,7 +776,7 @@
     <div class="sec-head">
       <div>
         <p class="eyebrow">Careers</p>
-        <h2 class="title">Help us design the execution<br>speed of national security</h2>
+        <h2 class="title">Set the pace of<br>national security</h2>
       </div>
       <p class="lede">Specific job postings are in preparation. If you're interested in a position or have a collaboration proposal, email us at contact@keonix.co.kr.</p>
     </div>
