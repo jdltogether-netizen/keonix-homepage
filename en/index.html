@@ -2,823 +2,1077 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KEONIX | Korea's Operational Nexus of Intelligent eXecution</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>KEONIX Labs</title>
 <meta name="description" content="KEONIX Labs builds systems for high-speed mass production of low-cost drones through additive manufacturing, and for full-lifecycle operations and training." />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230a0d0e%22/><text x=%2250%22 y=%2266%22 font-size=%2260%22 fill=%22%23C6F135%22 text-anchor=%22middle%22 font-family=%22monospace%22>K</text></svg>">
+<meta property="og:title" content="KEONIX Labs — Korea's Operational Nexus of Intelligent eXecution" />
+<meta property="og:description" content="Low-cost drones, built and deployed at national speed." />
+<meta property="og:image" content="https://keonix.co.kr/assets/product-drone-fleet.png" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230b0d0a%22/><path d=%22M30 22h14v22l20-22h17L58 47l24 31H64L47 55l-3 3v20H30z%22 fill=%22%232f7bff%22/></svg>">
 <link rel="alternate" hreflang="ko" href="https://keonix.co.kr/" />
 <link rel="alternate" hreflang="en" href="https://keonix.co.kr/en/" />
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 
 <style>
+  /* Layout: full-bleed field imagery and HUD frames over an olive-black ground; content on a 1280px grid. */
   :root{
-    --bg: #0a0d0e;
-    --bg-1: #0d1112;
-    --bg-card: #12181a;
-    --bg-card-hover: #161e20;
-    --border: #212b2c;
-    --border-strong: #2c3a3b;
-    --accent: #c6f135;
-    --accent-dim: rgba(198,241,53,.10);
-    --accent-dim2: rgba(198,241,53,.22);
-    --text-0: #f4f6f1;
-    --text-1: #b7c1bd;
-    --text-2: #7c8886;
-    --text-3: #4c5859;
-    --radius: 2px;
-    --maxw: 1180px;
-    --font-display: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-body: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-  }
+    color-scheme: dark;
+    --bg:        #0b0d0a;   /* olive-black, from the containers' shadow side */
+    --bg-2:      #11140f;
+    --panel:     #161a13;
+    --line:      #262b20;
+    --line-2:    #39402f;
+    --fg:        #ebe9e1;   /* bone */
+    --muted:     #8e9384;
+    --dim:       #5d6355;
+    --accent:    #2f7bff;   /* the blue in the KEONIX "X" */
+    --accent-2:  #8fb6ff;
+    --accent-bg: rgba(47,123,255,.12);
+    --ok:        #7fd18b;
+    --on-accent: #ffffff;
+    --nav-glass: rgba(11,13,10,.78);
+    --glass:     rgba(11,13,10,.88);
 
+    --f-display: 'Saira Condensed', 'Arial Narrow', 'Pretendard Variable', sans-serif;
+    --f-body:    'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    --f-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+    --maxw: 1280px;
+    --gut: clamp(16px, 4vw, 48px);
+    --ease: cubic-bezier(.2,.7,.1,1);
+  }
   *{ box-sizing:border-box; margin:0; padding:0; }
-  html{ scroll-behavior:smooth; }
-  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; } }
-
+  html{ -webkit-text-size-adjust:100%; }
   body{
-    background:var(--bg);
-    color:var(--text-0);
-    font-family:var(--font-body);
-    font-weight:400;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    background:var(--bg); color:var(--fg);
+    font-family:var(--f-body); font-size:16px; line-height:1.65;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
-
-  ::selection{ background:var(--accent); color:#0a0d0e; }
-
-  a{ color:inherit; text-decoration:none; }
   img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  ::selection{ background:var(--accent); color:var(--on-accent); }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+  button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
 
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
-  @media (max-width:720px){ .wrap{ padding:0 20px; } }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding-inline:var(--gut); }
+  .mono{ font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+  .eyebrow{ font-family:var(--f-mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-2); display:flex; align-items:center; gap:10px; }
+  .eyebrow::before{ content:""; width:18px; height:1px; background:var(--accent); flex:none; }
+  .display{ font-family:var(--f-display); font-weight:700; text-transform:uppercase; line-height:.9; letter-spacing:-.005em; }
+  h2.title{ font-size:clamp(28px, 3.6vw, 48px); font-weight:700; line-height:1.2; letter-spacing:-.025em; text-wrap:balance; }
+  .lede{ color:var(--muted); font-size:clamp(16px,1.25vw,18px); max-width:62ch; }
 
-  .eyebrow{
-    font-family:var(--font-mono);
-    font-size:12px;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-    color:var(--accent);
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
+  /* ---------- boot loader ---------- */
+  .boot{
+    position:fixed; inset:0; z-index:100; background:var(--bg);
+    display:grid; place-items:center; font-family:var(--f-mono);
+    animation: bootOut .5s var(--ease) 2.6s forwards; /* failsafe if JS never runs */
   }
-  .eyebrow::before{
-    content:"";
-    width:7px; height:7px;
-    background:var(--accent);
-    display:inline-block;
-    box-shadow:0 0 8px var(--accent);
-  }
+  .boot.done{ animation: bootOut .45s var(--ease) forwards; }
+  @keyframes bootOut{ to{ opacity:0; visibility:hidden; } }
+  .boot-inner{ width:min(420px, 80vw); display:grid; gap:14px; }
+  .boot-row{ display:flex; justify-content:space-between; font-size:12px; color:var(--muted); letter-spacing:.1em; }
+  .boot-num{ font-family:var(--f-display); font-size:clamp(64px,12vw,120px); font-weight:700; line-height:.8; color:var(--fg); font-variant-numeric:tabular-nums; }
+  .boot-bar{ height:2px; background:var(--line); position:relative; overflow:hidden; }
+  .boot-bar i{ position:absolute; inset:0; background:var(--accent); transform-origin:left; transform:scaleX(0); }
+  .boot-log{ font-size:11px; color:var(--dim); letter-spacing:.06em; }
 
-  h1,h2,h3{ font-family:var(--font-display); font-weight:800; letter-spacing:-0.02em; color:var(--text-0); }
+  /* ---------- nav ---------- */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    padding-top:env(safe-area-inset-top, 0px);
+    transition:background .3s, border-color .3s;
+    border-bottom:1px solid transparent;
+  }
+  .nav.scrolled{ background:var(--nav-glass); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-color:var(--line); }
+  .nav-in{ max-width:var(--maxw); margin:0 auto; padding:16px var(--gut); display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .nav-logo{ height:26px; width:auto; }
+  .nav-links{ display:flex; align-items:center; gap:26px; font-size:14px; color:var(--muted); }
+  .nav-links a:not(.btn):hover{ color:var(--fg); }
+  .lang{ font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; border:1px solid var(--line-2); padding:4px 8px; }
+  .lang b{ color:var(--fg); font-weight:500; }
+  .menu-btn{ display:none; width:40px; height:40px; position:relative; }
+  .menu-btn span{ position:absolute; left:10px; right:10px; height:1.5px; background:var(--fg); transition:transform .3s; }
+  .menu-btn span:first-child{ top:16px; } .menu-btn span:last-child{ top:23px; }
+  .nav.open .menu-btn span:first-child{ transform:translateY(3.5px) rotate(45deg); }
+  .nav.open .menu-btn span:last-child{ transform:translateY(-3.5px) rotate(-45deg); }
 
-  .section{ padding:120px 0; border-bottom:1px solid var(--border); position:relative; }
-  @media (max-width:720px){ .section{ padding:80px 0; } }
-  .section-head{ max-width:640px; margin-bottom:56px; }
-  .section-title{ font-size:clamp(28px,3.4vw,42px); margin-top:14px; line-height:1.25; }
-  .section-sub{ color:var(--text-1); margin-top:16px; font-size:16px; max-width:560px; }
-
-  /* ---------- NAV ---------- */
-  header.nav{
-    position:fixed; top:0; left:0; right:0; z-index:200;
-    background:rgba(10,13,14,.72);
-    backdrop-filter:blur(14px) saturate(140%);
-    border-bottom:1px solid var(--border);
-  }
-  .nav-inner{
-    max-width:var(--maxw); margin:0 auto; padding:0 32px;
-    height:68px; display:flex; align-items:center; justify-content:space-between;
-  }
-  @media (max-width:720px){ .nav-inner{ padding:0 20px; } }
-  .logo{
-    font-family:var(--font-mono); font-weight:600; font-size:18px; letter-spacing:.04em;
-    display:flex; align-items:center; gap:8px;
-  }
-  .logo .dot{ width:8px; height:8px; background:var(--accent); box-shadow:0 0 10px var(--accent); }
-  .nav-links{ display:flex; gap:36px; align-items:center; }
-  .nav-links a{
-    font-size:14px; color:var(--text-1); position:relative; padding:4px 0;
-    transition:color .2s;
-  }
-  .nav-links a:hover{ color:var(--text-0); }
-  .nav-links a::after{
-    content:""; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:var(--accent);
-    transition:width .25s;
-  }
-  .nav-links a:hover::after{ width:100%; }
-  .nav-cta{
-    font-family:var(--font-mono); font-size:12.5px; letter-spacing:.05em;
-    border:1px solid var(--accent); color:var(--accent) !important;
-    padding:9px 18px; transition:background .2s,color .2s;
-  }
-  .nav-cta:hover{ background:var(--accent); color:#0a0d0e !important; }
-  .nav-cta::after{ display:none; }
-
-  .burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:6px; }
-  .burger span{ width:22px; height:2px; background:var(--text-0); display:block; }
-
-  @media (max-width: 860px){
-    .nav-links{
-      position:fixed; top:68px; left:0; right:0; bottom:0;
-      background:var(--bg); flex-direction:column; align-items:flex-start;
-      padding:32px 24px; gap:22px; border-top:1px solid var(--border);
-      transform:translateY(-8px); opacity:0; pointer-events:none; transition:all .22s;
-    }
-    .nav-links.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
-    .nav-links a{ font-size:17px; }
-    .burger{ display:flex; }
-  }
-
-  /* ---------- HERO ---------- */
-  .hero{
-    min-height:100vh; display:flex; align-items:center; position:relative;
-    padding-top:68px; overflow:hidden; border-bottom:1px solid var(--border);
-  }
-  .hero-bg{ position:absolute; inset:0; z-index:0; }
-  .radar{
-    position:absolute; top:50%; right:-8%; transform:translateY(-50%);
-    width:820px; height:820px; max-width:110vw;
-    opacity:.55;
-  }
-  @media (max-width:1000px){ .radar{ right:-30%; opacity:.35; } }
-  .radar svg{ width:100%; height:100%; }
-  .radar-ring{ fill:none; stroke:var(--border-strong); stroke-width:1; }
-  .radar-sweep{ transform-origin:400px 400px; animation:spin 6s linear infinite; }
-  @keyframes spin{ to{ transform:rotate(360deg); } }
-  .radar-node{ fill:var(--accent); }
-  .radar-node.pulse{ animation:pulse 2.4s ease-in-out infinite; }
-  @keyframes pulse{ 0%,100%{ opacity:.35; r:3; } 50%{ opacity:1; r:5; } }
-
-  .hero-inner{ position:relative; z-index:1; padding:60px 0 80px; }
-  .hero-title{
-    font-size:clamp(38px,6vw,74px);
-    line-height:1.08; margin:22px 0 26px; max-width:820px;
-  }
-  .hero-title .accent{ color:var(--accent); }
-  .hero-sub{
-    font-size:18px; color:var(--text-1); max-width:560px; margin-bottom:40px;
-  }
-  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:64px; }
   .btn{
-    font-family:var(--font-mono); font-size:13px; letter-spacing:.04em;
-    padding:14px 26px; border:1px solid var(--border-strong);
     display:inline-flex; align-items:center; gap:10px;
-    transition:all .2s;
+    font-family:var(--f-mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+    padding:13px 20px; border:1px solid var(--line-2); color:var(--fg);
+    position:relative; overflow:hidden; isolation:isolate; transition:border-color .3s, color .3s;
   }
-  .btn-primary{ background:var(--accent); color:#0a0d0e; border-color:var(--accent); }
-  .btn-primary:hover{ background:transparent; color:var(--accent); }
-  .btn-ghost{ color:var(--text-0); }
-  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
+  .btn::before{ content:""; position:absolute; inset:0; background:var(--accent); transform:scaleX(0); transform-origin:right; transition:transform .45s var(--ease); z-index:-1; }
+  .btn:hover::before{ transform:scaleX(1); transform-origin:left; }
+  .btn:hover{ border-color:var(--accent); color:var(--on-accent); }
+  .btn.solid{ background:var(--accent); border-color:var(--accent); color:var(--on-accent); }
+  .btn.solid::before{ background:var(--fg); }
+  .btn.solid:hover{ color:var(--bg); border-color:var(--fg); }
+  .btn .arr{ transition:transform .3s var(--ease); }
+  .btn:hover .arr{ transform:translateX(4px); }
 
-  .hero-coords{
-    font-family:var(--font-mono); font-size:11.5px; color:var(--text-3);
-    display:flex; gap:28px; flex-wrap:wrap; letter-spacing:.03em;
-    border-top:1px solid var(--border); padding-top:22px;
+  /* ---------- hero ---------- */
+  .hero{ position:relative; min-height:min(100svh, 980px); display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; isolation:isolate; padding-top:180px; }
+  .hero-media{ position:absolute; inset:0; z-index:-2; }
+  .hero-media img{ width:100%; height:100%; object-fit:cover; object-position:50% 62%; transform:scale(1.08); animation:kb 18s ease-out forwards; filter:saturate(.75) contrast(1.05); }
+  @keyframes kb{ to{ transform:scale(1); } }
+  .hero::before{ content:""; position:absolute; inset:0; z-index:-1;
+    background:
+      linear-gradient(180deg, rgba(11,13,10,.82) 0%, rgba(11,13,10,.15) 32%, rgba(11,13,10,.35) 58%, var(--bg) 100%),
+      linear-gradient(90deg, rgba(11,13,10,.7) 0%, transparent 60%);
   }
-  .hero-coords span b{ color:var(--text-2); font-weight:500; }
+  .scan{ position:absolute; inset:0; z-index:-1; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); mix-blend-mode:overlay; }
+  .hud{ position:absolute; inset:calc(84px + env(safe-area-inset-top,0px)) var(--gut) auto; display:flex; justify-content:space-between; gap:16px; font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; color:var(--fg); opacity:.72; pointer-events:none; }
+  .hud div{ display:grid; gap:4px; }
+  .hud .r{ text-align:right; }
+  .hud .live::before{ content:""; display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--ok); margin-right:8px; animation:ping 2s infinite; vertical-align:1px; }
+  @keyframes ping{ 0%{ box-shadow:0 0 0 0 rgba(127,209,139,.6); } 70%,100%{ box-shadow:0 0 0 8px rgba(127,209,139,0); } }
+  .reticle{ position:absolute; left:50%; top:66%; width:150px; height:150px; transform:translate(-50%,-50%); pointer-events:none; z-index:-1; }
+  .reticle i{ position:absolute; width:22px; height:22px; border:0 solid var(--accent-2); }
+  .reticle i:nth-child(1){ top:0; left:0; border-top-width:1px; border-left-width:1px; }
+  .reticle i:nth-child(2){ top:0; right:0; border-top-width:1px; border-right-width:1px; }
+  .reticle i:nth-child(3){ bottom:0; left:0; border-bottom-width:1px; border-left-width:1px; }
+  .reticle i:nth-child(4){ bottom:0; right:0; border-bottom-width:1px; border-right-width:1px; }
+  .reticle{ animation:breathe 3.2s ease-in-out infinite; }
+  @keyframes breathe{ 50%{ width:136px; height:136px; } }
+  .reticle span{ position:absolute; top:calc(100% + 10px); left:0; font-family:var(--f-mono); font-size:10px; letter-spacing:.1em; color:var(--accent-2); white-space:nowrap; }
 
-  /* ---------- STAT STRIP ---------- */
-  .stat-strip{
-    display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  .hero-body{ padding-block:0 clamp(40px,6vw,72px); }
+  .hero-kicker{ margin-bottom:22px; }
+  .hero h1{ font-size:clamp(54px, 11.5vw, 184px); }
+  .hero h1 .line{ display:block; overflow:hidden; padding-bottom:.03em; }
+  .hero h1 .line > span{ display:inline-block; }
+  .hero h1 em{ font-style:normal; color:var(--accent); }
+  .hero-foot{ margin-top:clamp(24px,3vw,40px); display:grid; grid-template-columns:minmax(0,1.1fr) auto; gap:32px; align-items:end; }
+  .hero-ko{ font-size:clamp(20px,2.1vw,30px); font-weight:600; letter-spacing:-.02em; line-height:1.35; max-width:22em; text-wrap:balance; }
+  .hero-ko b{ color:var(--accent-2); font-weight:700; }
+  .hero-sub{ margin-top:14px; color:var(--muted); max-width:56ch; }
+  .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+  .js .hero h1 .line > span{ transform:translateY(105%); }
+  .js.ready .hero h1 .line > span{ transform:none; transition:transform 1.1s var(--ease); }
+  .js.ready .hero h1 .line:nth-child(2) > span{ transition-delay:.08s; }
+  .js.ready .hero h1 .line:nth-child(3) > span{ transition-delay:.16s; }
+
+  /* ---------- ticker ---------- */
+  .ticker{ border-block:1px solid var(--line); background:var(--bg-2); overflow:hidden; }
+  .ticker-track{ display:flex; width:max-content; animation:tick 46s linear infinite; }
+  .ticker:hover .ticker-track{ animation-play-state:paused; }
+  @keyframes tick{ to{ transform:translateX(-50%); } }
+  .tk{ display:flex; align-items:baseline; gap:14px; padding:20px 36px; border-right:1px solid var(--line); white-space:nowrap; }
+  .tk b{ font-family:var(--f-display); font-size:34px; font-weight:700; line-height:1; letter-spacing:.01em; }
+  .tk span{ font-size:13px; color:var(--muted); }
+
+  /* ---------- sections ---------- */
+  section{ position:relative; }
+  .sec{ padding-block:clamp(88px, 11vw, 160px); }
+  .sec.flush{ padding-top:0; }
+  .sec-head{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:clamp(24px,5vw,80px); align-items:end; margin-bottom:clamp(48px,6vw,80px); }
+  .sec-head .eyebrow{ margin-bottom:22px; }
+  .idx{ font-family:var(--f-mono); font-size:11px; color:var(--dim); letter-spacing:.12em; }
+
+  /* reveal: visible by default; JS only pre-hides what starts below the fold */
+  .rv{ transition:opacity .9s var(--ease), transform .9s var(--ease); }
+  .rv.pre{ opacity:0; transform:translateY(24px); }
+
+  /* ---------- mission ---------- */
+  .statement{ font-size:clamp(28px, 4.2vw, 60px); font-weight:700; letter-spacing:-.035em; line-height:1.22; max-width:22em; text-wrap:balance; margin-top:28px; }
+  .statement .w{ color:var(--dim); transition:color .5s; }
+  .statement .w.on{ color:var(--fg); }
+  .statement .hl.on{ color:var(--accent-2); }
+  .mission-grid{ margin-top:clamp(56px,7vw,96px); display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .mission-grid > div{ background:var(--bg); padding:clamp(24px,3vw,40px); }
+  .mission-grid .mono{ color:var(--accent-2); }
+  .mission-grid h3{ font-size:22px; letter-spacing:-.02em; margin:14px 0 10px; }
+  .mission-grid p{ color:var(--muted); font-size:15px; }
+  .stages{ margin-top:clamp(40px,5vw,64px); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(16px,2vw,28px); }
+  .stage{ border-top:1px solid var(--line-2); padding-top:22px; position:relative; }
+  .stage::before{ content:""; position:absolute; top:-1px; left:0; height:1px; width:0; background:var(--accent); transition:width 1.2s var(--ease) .2s; }
+  .stage.in::before{ width:100%; }
+  .stage .num{ font-family:var(--f-display); font-size:64px; font-weight:700; line-height:.9; color:var(--line-2); }
+  .stage h4{ font-size:18px; margin:12px 0 6px; letter-spacing:-.01em; }
+  .stage p{ color:var(--muted); font-size:14.5px; }
+
+  /* ---------- solution / foundry ---------- */
+  .foundry{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(24px,4vw,64px); align-items:stretch; }
+  .printer{ position:relative; background:var(--bg-2); border:1px solid var(--line); min-height:520px; display:flex; flex-direction:column; }
+  .printer-top, .printer-bot{ display:flex; justify-content:space-between; gap:12px; padding:14px 18px; font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; color:var(--muted); flex-wrap:wrap; }
+  .printer-top{ border-bottom:1px solid var(--line); }
+  .printer-bot{ border-top:1px solid var(--line); font-variant-numeric:tabular-nums; }
+  .printer-bot b{ color:var(--fg); font-weight:500; }
+  .printer canvas{ flex:1; width:100%; min-height:340px; display:block; }
+  .term{ font-family:var(--f-mono); font-size:12px; line-height:1.8; color:var(--muted); padding:14px 18px; border-top:1px solid var(--line); height:118px; overflow:hidden; }
+  .term div{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .term .ok{ color:var(--ok); } .term .ac{ color:var(--accent-2); }
+  .axes{ display:grid; gap:clamp(16px,2vw,24px); align-content:start; }
+  .axis{ border:1px solid var(--line); padding:clamp(24px,3vw,36px); background:linear-gradient(180deg, var(--panel), var(--bg)); position:relative; }
+  .axis .mono{ color:var(--accent-2); }
+  .axis h3{ font-size:clamp(24px,2.4vw,32px); letter-spacing:-.03em; margin:12px 0 4px; }
+  .axis .en{ font-family:var(--f-display); font-size:18px; letter-spacing:.04em; text-transform:uppercase; color:var(--dim); margin-bottom:14px; }
+  .axis p{ color:var(--muted); font-size:15px; }
+  .axis .corner{ position:absolute; top:-1px; right:-1px; width:14px; height:14px; border-top:1px solid var(--accent); border-right:1px solid var(--accent); }
+
+  .caps{ margin-top:clamp(48px,6vw,80px); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid var(--line); }
+  .cap{ padding:28px 28px 32px 0; border-bottom:1px solid var(--line); display:grid; grid-template-columns:auto minmax(0,1fr); gap:6px 18px; }
+  .cap:not(:nth-child(3n+1)){ padding-left:28px; border-left:1px solid var(--line); }
+  .cap .idx{ grid-row:span 2; padding-top:4px; }
+  .cap h4{ font-size:17px; letter-spacing:-.01em; transition:color .3s; }
+  .cap p{ color:var(--muted); font-size:14px; }
+  .cap:hover h4{ color:var(--accent-2); }
+
+  /* ---------- system (container) ---------- */
+  .system{ background:var(--bg-2); border-block:1px solid var(--line); overflow:hidden; }
+  .unit-wrap{ position:relative; isolation:isolate; }
+  .unit-grid{ position:absolute; inset:-10% -20%; z-index:-1; background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:48px 48px; mask-image:radial-gradient(ellipse at center, #000 20%, transparent 70%); -webkit-mask-image:radial-gradient(ellipse at center, #000 20%, transparent 70%); opacity:.6; }
+  .unit{ position:relative; }
+  .unit-img{ width:100%; height:auto; filter:drop-shadow(0 40px 60px rgba(0,0,0,.6)); }
+  .hot{ position:absolute; transform:translate(-50%,-50%); width:28px; height:28px; border-radius:50%; display:grid; place-items:center; }
+  .hot::before{ content:""; width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-bg); }
+  .hot::after{ content:""; position:absolute; inset:0; border-radius:50%; border:1px solid var(--accent); animation:hotp 2.4s var(--ease) infinite; }
+  @keyframes hotp{ from{ transform:scale(.5); opacity:1; } to{ transform:scale(1.8); opacity:0; } }
+  .hot .tip{ position:absolute; left:calc(100% + 8px); top:50%; transform:translateY(-50%); white-space:nowrap; background:var(--glass); border:1px solid var(--line-2); padding:8px 12px; font-size:13px; text-align:left; pointer-events:none; opacity:0; transition:opacity .25s; }
+  .hot .tip small{ display:block; font-family:var(--f-mono); font-size:10px; letter-spacing:.1em; color:var(--accent-2); }
+  .hot:hover .tip, .hot:focus-visible .tip, .hot.show .tip{ opacity:1; }
+  .hot.left .tip{ left:auto; right:calc(100% + 8px); }
+  .specs{ margin-top:clamp(32px,4vw,56px); display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .specs div{ background:var(--bg-2); padding:20px 22px; }
+  .specs dt{ font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; color:var(--dim); text-transform:uppercase; }
+  .specs dd{ margin-top:6px; font-size:15px; }
+
+  .deploy{ position:relative; min-height:clamp(440px, 70vw, 820px); overflow:hidden; display:flex; align-items:flex-end; isolation:isolate; }
+  .deploy img{ position:absolute; left:0; top:-12%; width:100%; height:124%; object-fit:cover; z-index:-2; will-change:transform; }
+  .deploy::before{ content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg, var(--bg-2) 0%, transparent 25%, transparent 50%, var(--bg) 100%); }
+  .deploy-body{ padding-block:0 clamp(40px,6vw,80px); width:100%; }
+  .deploy h2{ font-size:clamp(52px,9vw,140px); margin-top:16px; }
+  .deploy h2 span{ color:var(--accent); }
+  .deploy-row{ display:flex; justify-content:space-between; align-items:end; gap:24px; flex-wrap:wrap; margin-top:20px; }
+  .deploy-row p{ max-width:46ch; }
+  .deploy-tags{ display:flex; gap:8px; flex-wrap:wrap; }
+  .tag{ font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; padding:6px 10px; border:1px solid var(--line-2); background:var(--glass); }
+
+  /* ---------- gaecheon cycle ---------- */
+  .cycle{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:clamp(32px,5vw,80px); align-items:center; }
+  .ring{ position:relative; width:100%; max-width:600px; aspect-ratio:560/440; margin-inline:auto; }
+  .ring svg{ width:100%; height:100%; display:block; }
+  .ring .node{ cursor:pointer; }
+  .ring .node circle{ fill:var(--bg); stroke:var(--line-2); stroke-width:1; transition:fill .3s, stroke .3s; }
+  .ring .node text{ fill:var(--muted); font-family:var(--f-mono); font-size:11px; letter-spacing:.08em; transition:fill .3s; }
+  .ring .node.on circle{ fill:var(--accent); stroke:var(--accent); }
+  .ring .node.on text{ fill:var(--fg); }
+  .ring .node:focus{ outline:none; }
+  .ring .node:focus-visible circle{ stroke:var(--fg); stroke-width:2; }
+  .ring-core{ position:absolute; inset:0; display:grid; place-items:center; text-align:center; pointer-events:none; }
+  .ring-core .display{ font-size:clamp(44px,6vw,72px); }
+  .ring-core .mono{ color:var(--muted); margin-top:6px; }
+  .stepcard{ border:1px solid var(--line); background:var(--panel); padding:clamp(24px,3vw,36px); min-height:200px; }
+  .stepcard .mono{ color:var(--accent-2); }
+  .stepcard h3{ font-size:clamp(28px,3vw,40px); letter-spacing:-.03em; margin:10px 0 8px; }
+  .stepcard p{ color:var(--muted); }
+  .steplist{ margin-top:16px; display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:6px; }
+  .steplist button{ height:18px; position:relative; }
+  .steplist button::before{ content:""; position:absolute; left:0; right:0; top:8px; height:3px; background:var(--line-2); }
+  .steplist button::after{ content:""; position:absolute; left:0; right:0; top:8px; height:3px; background:var(--accent); transform:scaleX(0); transform-origin:left; }
+  .steplist button.on::after{ animation:fill 4s linear forwards; }
+  .steplist button.done::after{ transform:scaleX(1); }
+  @keyframes fill{ to{ transform:scaleX(1); } }
+  .hub{ margin-top:clamp(48px,6vw,80px); display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(20px,3vw,40px); border-top:1px solid var(--line); padding-top:32px; }
+  .hub .coord{ font-family:var(--f-mono); font-size:12px; color:var(--dim); letter-spacing:.08em; line-height:1.9; }
+  .hub .coord b{ display:block; color:var(--accent-2); font-weight:500; }
+  .hub h3{ font-size:22px; letter-spacing:-.02em; margin-bottom:8px; }
+  .hub p{ color:var(--muted); max-width:72ch; }
+
+  /* ---------- roadmap ---------- */
+  .road{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(12px,1.6vw,20px); align-items:end; }
+  .phase{ display:flex; flex-direction:column; }
+  .bar-area{ height:clamp(170px,22vw,280px); display:flex; align-items:flex-end; border-bottom:1px solid var(--line-2); }
+  .bar{ width:100%; height:var(--h); background:linear-gradient(180deg, rgba(47,123,255,.32), rgba(47,123,255,.04)); border-top:2px solid var(--accent); position:relative; transform-origin:bottom; transition:transform 1.4s var(--ease) .15s; }
+  .phase.pre .bar{ transform:scaleY(0); }
+  .bar span{ position:absolute; top:12px; left:14px; font-family:var(--f-display); font-size:clamp(26px,3vw,44px); font-weight:700; line-height:1; }
+  .bar small{ display:block; font-family:var(--f-mono); font-size:10px; letter-spacing:.1em; color:var(--accent-2); margin-top:6px; font-weight:400; }
+  .phase-info{ padding-top:18px; }
+  .phase-info .mono{ color:var(--accent-2); }
+  .phase-info .yr{ font-family:var(--f-display); font-size:24px; font-weight:600; margin:6px 0 4px; }
+  .phase-info h4{ font-size:16px; margin-bottom:6px; }
+  .phase-info p{ font-size:14px; color:var(--muted); }
+  .scale-note{ margin-top:22px; color:var(--dim); }
+
+  /* ---------- team ---------- */
+  .team{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(12px,1.6vw,20px); }
+  .member{ display:flex; flex-direction:column; min-width:0; }
+  .photo{ position:relative; aspect-ratio:4/5; overflow:hidden; background:var(--panel); }
+  .photo img{ width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.08) brightness(.9); transition:filter .6s, transform .8s var(--ease); }
+  .photo::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 55%, rgba(11,13,10,.85)); }
+  .member:hover .photo img{ filter:none; transform:scale(1.04); }
+  .photo .role{ position:absolute; left:14px; right:14px; bottom:12px; z-index:1; font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; color:var(--accent-2); }
+  .member h3{ font-size:22px; letter-spacing:-.02em; margin-top:16px; }
+  .member .deg{ font-size:13px; opacity:.8; margin:4px 0 10px; }
+  .member ul{ list-style:none; display:grid; gap:4px; }
+  .member li{ font-size:13.5px; color:var(--muted); padding-left:14px; position:relative; }
+  .member li::before{ content:""; position:absolute; left:0; top:.75em; width:6px; height:1px; background:var(--dim); }
+  .advisors{ margin-top:clamp(32px,4vw,48px); border:1px solid var(--line); padding:22px 26px; color:var(--muted); font-size:15px; display:flex; gap:18px; align-items:baseline; flex-wrap:wrap; }
+  .advisors .mono{ color:var(--accent-2); flex:none; }
+  .advisors span:last-child{ flex:1 1 320px; }
+  .staff{ margin-top:clamp(72px,9vw,120px); }
+  .staff .sec-head{ margin-bottom:40px; }
+  .staff-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .person{ background:var(--bg-2); padding:24px; display:grid; grid-template-columns:72px minmax(0,1fr); gap:18px; align-items:start; }
+  .person img{ width:72px; height:72px; object-fit:cover; filter:grayscale(1); }
+  .person .mono{ color:var(--accent-2); font-size:10.5px; }
+  .person h4{ font-size:18px; margin:4px 0 8px; }
+  .person ul{ list-style:none; display:grid; gap:3px; }
+  .person li{ font-size:13px; color:var(--muted); }
+
+  /* ---------- careers ---------- */
+  .jobs{ border-top:1px solid var(--line); }
+  .job{ display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) auto; gap:24px; align-items:center; padding:28px 0; border-bottom:1px solid var(--line); position:relative; isolation:isolate; transition:padding .4s var(--ease), opacity .9s var(--ease), transform .9s var(--ease); }
+  .job::before{ content:""; position:absolute; inset:0; background:var(--accent-bg); transform:scaleY(0); transform-origin:bottom; transition:transform .4s var(--ease); z-index:-1; }
+  .job:hover{ padding-inline:20px; }
+  .job:hover::before{ transform:scaleY(1); }
+  .job h3{ font-size:clamp(20px,2.2vw,28px); letter-spacing:-.025em; }
+  .job .meta{ font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; color:var(--muted); text-transform:uppercase; }
+  .job .go{ font-family:var(--f-mono); font-size:20px; color:var(--accent-2); transition:transform .3s var(--ease); }
+  .job:hover .go{ transform:translateX(6px); }
+
+  /* ---------- contact ---------- */
+  .contact{ border-top:1px solid var(--line); background:radial-gradient(ellipse 70% 60% at 85% 0%, var(--accent-bg), transparent 70%), var(--bg); }
+  .contact h2{ font-size:clamp(34px,5.6vw,84px); font-weight:800; letter-spacing:-.045em; line-height:1.08; max-width:14em; text-wrap:balance; margin-top:28px; }
+  .contact h2 span{ color:var(--accent-2); }
+  .contact-grid{ margin-top:clamp(40px,5vw,72px); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(32px,5vw,80px); }
+  .info{ border-top:1px solid var(--line); }
+  .info div{ display:grid; grid-template-columns:110px minmax(0,1fr); gap:16px; padding:16px 0; border-bottom:1px solid var(--line); }
+  .info dt{ font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; color:var(--dim); text-transform:uppercase; padding-top:3px; }
+  .info dd{ font-size:15px; overflow-wrap:anywhere; }
+  .info a:hover{ color:var(--accent-2); }
+  .contact-cta p{ color:var(--muted); margin-bottom:24px; max-width:48ch; }
+  .contact-cta .lead{ color:var(--fg); font-size:20px; font-weight:600; letter-spacing:-.02em; margin-bottom:10px; }
+
+  footer{ border-top:1px solid var(--line); padding-block:36px calc(24px + env(safe-area-inset-bottom,0px)); overflow:hidden; }
+  .foot{ display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
+  .foot img{ height:22px; width:auto; opacity:.85; }
+  .foot p{ font-size:12.5px; color:var(--dim); line-height:1.8; }
+  .foot-mark{ margin-top:40px; font-family:var(--f-display); font-weight:800; font-size:clamp(64px,22vw,320px); line-height:.78; color:transparent; -webkit-text-stroke:1px var(--line-2); text-align:center; user-select:none; white-space:nowrap; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 1080px){
+    .nav-links{ gap:18px; }
+    .nav-links .opt{ display:none; }
+    .foundry, .cycle, .contact-grid{ grid-template-columns:minmax(0,1fr); }
+    .team{ grid-template-columns:repeat(2,minmax(0,1fr)); row-gap:40px; }
+    .staff-grid{ grid-template-columns:minmax(0,1fr); }
+    .caps{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .cap:not(:nth-child(3n+1)){ padding-left:0; border-left:0; }
+    .cap:nth-child(2n){ padding-left:28px; border-left:1px solid var(--line); }
+    .specs{ grid-template-columns:repeat(2,minmax(0,1fr)); }
   }
-  @media (max-width:820px){ .stat-strip{ grid-template-columns:repeat(2,1fr); } }
-  .stat{
-    padding:34px 32px; border-right:1px solid var(--border);
+  @media (max-width: 820px){
+    .menu-btn{ display:block; }
+    .nav.open{ background:var(--bg); backdrop-filter:none; -webkit-backdrop-filter:none; border-color:var(--line); }
+    .nav-links{ position:fixed; left:0; right:0; bottom:0; top:calc(73px + env(safe-area-inset-top,0px)); background:var(--bg); flex-direction:column; align-items:flex-start; padding:24px var(--gut); gap:4px; font-size:22px; color:var(--fg); transform:translateY(-8px); opacity:0; visibility:hidden; transition:opacity .25s, transform .25s, visibility .25s; overflow-y:auto; }
+    .nav-links a:not(.btn){ padding:10px 0; width:100%; border-bottom:1px solid var(--line); }
+    .nav-links .opt{ display:block; }
+    .nav-links .lang{ border:0; border-bottom:1px solid var(--line); padding:10px 0; font-size:16px; }
+    .nav-links .btn{ margin-top:20px; }
+    .nav.open .nav-links{ opacity:1; transform:none; visibility:visible; }
+    .sec-head{ grid-template-columns:minmax(0,1fr); align-items:start; }
+    .hero-foot{ grid-template-columns:minmax(0,1fr); }
+    .hud .r, .reticle{ display:none; }
+    .mission-grid, .stages{ grid-template-columns:minmax(0,1fr); }
+    .road{ grid-template-columns:repeat(2,minmax(0,1fr)); row-gap:40px; }
+    .job{ grid-template-columns:minmax(0,1fr) auto; gap:6px 16px; }
+    .job .meta{ grid-column:1; grid-row:2; }
+    .job .go{ grid-row:1 / span 2; grid-column:2; }
+    .hot .tip{ display:none; }
+    .hub{ grid-template-columns:minmax(0,1fr); }
   }
-  .stat:last-child{ border-right:none; }
-  @media (max-width:820px){ .stat:nth-child(2n){ border-right:none; } .stat:nth-child(-n+2){ border-bottom:1px solid var(--border); } }
-  .stat-num{ font-family:var(--font-mono); font-size:26px; color:var(--accent); font-weight:600; }
-  .stat-label{ font-size:13px; color:var(--text-2); margin-top:8px; line-height:1.5; }
-
-  /* ---------- CARDS ---------- */
-  .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin-top:8px; }
-  @media (max-width:760px){ .grid-2{ grid-template-columns:1fr; } }
-  .card{ background:var(--bg-card); padding:38px; transition:background .2s; }
-  .card:hover{ background:var(--bg-card-hover); }
-  .card-tag{ font-family:var(--font-mono); font-size:11px; color:var(--text-2); letter-spacing:.1em; text-transform:uppercase; }
-  .card h3{ font-size:21px; margin:12px 0 12px; }
-  .card p{ color:var(--text-1); font-size:14.5px; line-height:1.7; }
-
-  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:40px; }
-  @media (max-width:900px){ .grid-3{ grid-template-columns:1fr; } }
-  .cap{ background:var(--bg-1); padding:30px; }
-  .cap-num{ font-family:var(--font-mono); color:var(--accent); font-size:12px; }
-  .cap h4{ font-size:16px; margin:10px 0 8px; color:var(--text-0); font-weight:700; }
-  .cap p{ font-size:13.5px; color:var(--text-2); line-height:1.65; }
-
-  /* ---------- ECOSYSTEM HEX ---------- */
-  .eco-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:16px; }
-  @media (max-width:760px){ .eco-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:480px){ .eco-grid{ grid-template-columns:1fr; } }
-  .eco-cell{ background:var(--bg-card); padding:30px 26px; position:relative; }
-  .eco-cell .idx{ font-family:var(--font-mono); font-size:11px; color:var(--text-3); }
-  .eco-cell h4{ font-size:17px; margin:10px 0 8px; }
-  .eco-cell p{ font-size:13.5px; color:var(--text-2); }
-  .eco-cell.active{ background:var(--accent-dim); }
-  .eco-cell.active h4{ color:var(--accent); }
-
-  .hub-banner{
-    margin-top:1px; background:var(--bg-1); border:1px solid var(--border); border-top:none;
-    padding:28px 34px; display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;
+  @media (max-width: 560px){
+    .caps, .team{ grid-template-columns:minmax(0,1fr); }
+    .cap:nth-child(2n){ padding-left:0; border-left:0; }
+    .specs{ grid-template-columns:minmax(0,1fr); }
+    .info div{ grid-template-columns:minmax(0,1fr); gap:2px; }
+    .tk b{ font-size:28px; }
+    .printer{ min-height:460px; }
+    .ring .node text{ font-size:13px; }
   }
-  .hub-banner .label{ font-family:var(--font-mono); font-size:12px; color:var(--accent); letter-spacing:.08em; }
-  .hub-banner p{ color:var(--text-1); font-size:14.5px; margin-top:6px; max-width:640px; }
-
-  /* ---------- ROADMAP ---------- */
-  .roadmap{ margin-top:20px; position:relative; }
-  .rm-row{
-    display:grid; grid-template-columns:160px 1fr 140px; gap:24px; align-items:start;
-    padding:28px 0; border-top:1px solid var(--border);
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+    .ticker-track{ animation:none; }
   }
-  .roadmap .rm-row:last-child{ border-bottom:1px solid var(--border); }
-  @media (max-width:720px){ .rm-row{ grid-template-columns:1fr; gap:8px; } }
-  .rm-phase{ font-family:var(--font-mono); font-size:12px; color:var(--text-2); letter-spacing:.06em; }
-  .rm-year{ color:var(--accent); font-size:13px; margin-top:6px; display:block; }
-  .rm-body h4{ font-size:18px; margin-bottom:6px; }
-  .rm-body p{ color:var(--text-1); font-size:14px; }
-  .rm-val{ font-family:var(--font-mono); font-size:14px; color:var(--text-0); text-align:right; }
-  .rm-val .k{ display:block; font-size:10.5px; color:var(--text-3); margin-bottom:4px; letter-spacing:.08em; }
-  @media (max-width:720px){ .rm-val{ text-align:left; } }
-
-  /* ---------- TEAM ---------- */
-  .team-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:8px; }
-  @media (max-width:760px){ .team-grid{ grid-template-columns:1fr; } }
-  .member{ background:var(--bg-card); display:flex; }
-  .member-photo{ flex:none; width:132px; align-self:stretch; position:relative; overflow:hidden; background:var(--bg-1); }
-  .member-photo img{ width:100%; height:100%; object-fit:cover; filter:grayscale(28%) contrast(1.04); transition:filter .3s; }
-  .member:hover .member-photo img{ filter:grayscale(0%) contrast(1.04); }
-  .member-photo::after{ content:""; position:absolute; inset:0; box-shadow:inset -14px 0 18px -14px rgba(0,0,0,.6); }
-  .member-body{ padding:26px 28px; flex:1; min-width:0; }
-  @media (max-width:480px){ .member{ flex-direction:column; } .member-photo{ width:100%; height:180px; } }
-
-  .staff-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:8px; }
-  @media (max-width:900px){ .staff-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:560px){ .staff-grid{ grid-template-columns:1fr; } }
-  .staff-card{ background:var(--bg-card); }
-  .staff-photo{ width:100%; aspect-ratio:1/1; overflow:hidden; background:var(--bg-1); }
-  .staff-photo img{ width:100%; height:100%; object-fit:cover; filter:grayscale(28%) contrast(1.04); transition:filter .3s; }
-  .staff-card:hover .staff-photo img{ filter:grayscale(0%) contrast(1.04); }
-  .staff-body{ padding:22px 22px 26px; }
-  .avatar{
-    flex:none; width:56px; height:56px; border:1px solid var(--border-strong);
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-mono); color:var(--accent); font-size:15px; font-weight:600;
-    background:var(--bg-1);
-  }
-  .member-role{ font-family:var(--font-mono); font-size:11px; color:var(--accent); letter-spacing:.08em; text-transform:uppercase; }
-  .member h4{ font-size:18px; margin:6px 0 10px; }
-  .member ul{ list-style:none; }
-  .member li{ font-size:13px; color:var(--text-2); line-height:1.8; padding-left:14px; position:relative; }
-  .member li::before{ content:"—"; position:absolute; left:0; color:var(--text-3); }
-  .staff-card h4{ font-size:16.5px; margin:4px 0 8px; }
-  .staff-card ul{ list-style:none; }
-  .staff-card li{ font-size:12.5px; color:var(--text-2); line-height:1.75; padding-left:13px; position:relative; }
-  .staff-card li::before{ content:"—"; position:absolute; left:0; color:var(--text-3); }
-
-  .advisor-note{ margin-top:1px; background:var(--bg-1); border:1px solid var(--border); border-top:none; padding:26px 34px; color:var(--text-2); font-size:13.5px; line-height:1.8; }
-  .advisor-note b{ color:var(--text-0); }
-
-  /* ---------- CAREERS ---------- */
-  .careers-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:8px; }
-  @media (max-width:700px){ .careers-grid{ grid-template-columns:1fr; } }
-  .job{ background:var(--bg-card); padding:28px 30px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
-  .job-title{ font-size:15.5px; font-weight:600; }
-  .job-tag{ font-family:var(--font-mono); font-size:11px; color:var(--text-2); margin-top:6px; }
-  .job-arrow{ color:var(--accent); font-family:var(--font-mono); font-size:18px; transition:transform .2s; }
-  .job:hover .job-arrow{ transform:translateX(4px); }
-
-  /* ---------- CONTACT / FOOTER ---------- */
-  .contact-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:60px; margin-top:20px; }
-  @media (max-width:820px){ .contact-grid{ grid-template-columns:1fr; gap:36px; } }
-  .contact-item{ padding:20px 0; border-top:1px solid var(--border); }
-  .contact-item:last-child{ border-bottom:1px solid var(--border); }
-  .contact-item .k{ font-family:var(--font-mono); font-size:11px; color:var(--text-3); letter-spacing:.1em; text-transform:uppercase; }
-  .contact-item .v{ font-size:17px; margin-top:8px; }
-  .contact-item .v a:hover{ color:var(--accent); }
-
-  .cta-box{
-    border:1px solid var(--accent-dim2); background:var(--accent-dim);
-    padding:36px; display:flex; flex-direction:column; gap:18px; justify-content:center;
-  }
-  .cta-box h3{ font-size:22px; line-height:1.4; }
-  .cta-box p{ color:var(--text-1); font-size:14px; }
-
-  footer{ padding:36px 0; }
-  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
-  .footer-inner p{ font-family:var(--font-mono); font-size:11.5px; color:var(--text-3); letter-spacing:.03em; }
-  .footer-text{ display:flex; flex-direction:column; gap:6px; text-align:right; }
-  @media (max-width:760px){ .footer-text{ text-align:left; } }
-
-  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
-  .reveal.show{ opacity:1; transform:translateY(0); }
-
-  a.btn:focus-visible, a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
-
-  .nav-logo-img{ height:26px; width:auto; display:block; }
-  .footer-logo-img{ height:20px; width:auto; opacity:.85; }
-
-  .legal-strip{
-    font-family:var(--font-mono); font-size:13px; color:var(--text-0);
-    display:flex; flex-direction:column; gap:9px; letter-spacing:.02em;
-    border-top:1px solid var(--border); padding-top:24px; line-height:1.5;
-  }
-  .legal-strip .row{ display:flex; gap:10px; align-items:baseline; }
-  .legal-strip .k{ color:var(--accent); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; width:76px; flex:none; }
-  .legal-strip .v{ color:var(--text-0); font-weight:500; }
-  .legal-strip a.v:hover{ color:var(--accent); }
-
-  /* ---------- PRODUCT GALLERY ---------- */
-  .product-feature{
-    background:radial-gradient(ellipse at 50% 40%, #171f22 0%, var(--bg-1) 70%);
-    border:1px solid var(--border);
-    display:flex; align-items:center; justify-content:center;
-    padding:28px; margin-top:8px; position:relative; overflow:hidden;
-  }
-  .product-feature img{ width:100%; height:auto; object-fit:contain; max-height:520px; }
-  .product-feature .shot-tag{
-    position:absolute; top:20px; left:20px;
-    font-family:var(--font-mono); font-size:11px; letter-spacing:.1em;
-    color:#0a0d0e; background:var(--accent); padding:5px 10px;
-  }
-  .product-row{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); border-top:none; margin-top:1px; }
-  @media (max-width:760px){ .product-row{ grid-template-columns:1fr; } }
-  .product-shot{ position:relative; background:var(--bg-card); aspect-ratio:4/3; overflow:hidden; }
-  .product-shot img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
-  .product-shot:hover img{ transform:scale(1.045); }
-  .product-shot .cap{
-    position:absolute; left:0; right:0; bottom:0; padding:18px 20px 16px;
-    background:linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,0));
-  }
-  .product-shot .cap .k{ font-family:var(--font-mono); font-size:10.5px; color:var(--accent); letter-spacing:.1em; }
-  .product-shot .cap .t{ font-size:15px; color:var(--text-0); margin-top:4px; }
-
-  .lang-switch{ font-family:var(--font-mono); font-size:12.5px !important; letter-spacing:.06em; color:var(--text-2) !important; }
-  .lang-switch:hover{ color:var(--accent) !important; }
 </style>
 </head>
 <body>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a href="#home" class="logo"><img src="../assets/keonix-logo-nav.png" alt="KEONIX Labs" class="nav-logo-img"></a>
-    <nav class="nav-links" id="navLinks">
+<div class="boot" id="boot" aria-hidden="true">
+  <div class="boot-inner">
+    <div class="boot-row"><span>KEONIX // FOUNDRY OS</span><span>KR-DJN</span></div>
+    <div class="boot-num" id="bootNum">000</div>
+    <div class="boot-bar"><i id="bootBar"></i></div>
+    <div class="boot-row"><span class="boot-log" id="bootLog">INITIALIZING SYSTEM</span><span>/100</span></div>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#home" aria-label="KEONIX Labs home"><img class="nav-logo" src="../assets/keonix-logo-nav.png" alt="KEONIX Labs" width="86" height="26"></a>
+    <nav class="nav-links" id="navLinks" aria-label="Main menu">
       <a href="#mission">Mission</a>
       <a href="#solution">Solution</a>
-      <a href="#product">System</a>
-      <a href="#ecosystem">Project Gaecheon</a>
-      <a href="#roadmap">Roadmap</a>
+      <a href="#system">System</a>
+      <a href="#gaecheon">Project Gaecheon</a>
+      <a href="#roadmap" class="opt">Roadmap</a>
       <a href="#team">Team</a>
-      <a href="#staff">Personnel</a>
-      <a href="#careers">Careers</a>
-      <a href="../" class="lang-switch" lang="ko" hreflang="ko">한국어</a>
-      <a href="#contact" class="nav-cta">Contact</a>
+      <a href="#careers" class="opt">Careers</a>
+      <a href="../" class="lang" lang="ko" hreflang="ko" aria-label="한국어">KO / <b>EN</b></a>
+      <a href="#contact" class="btn solid">Contact <span class="arr">→</span></a>
     </nav>
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
   </div>
 </header>
 
 <main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-media"><img src="../assets/product-drone-fleet.png" alt="FPV drone fleet deployed in front of the mobile production unit" fetchpriority="high"></div>
+  <div class="scan"></div>
+  <div class="hud" aria-hidden="true">
+    <div>
+      <span class="live">UNIT 22G2 · ONLINE</span>
+      <span>36.3624°N 127.3561°E · DAEJEON</span>
+    </div>
+    <div class="r">
+      <span id="clock">KST --:--:--</span>
+      <span>FOUNDRY STATUS · DEPLOYABLE</span>
+    </div>
+  </div>
+  <div class="reticle" aria-hidden="true"><i></i><i></i><i></i><i></i><span>TGT · FPV FRAME / ADDITIVE</span></div>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-bg">
-      <div class="radar">
-        <svg viewBox="0 0 800 800">
-          <circle class="radar-ring" cx="400" cy="400" r="120"/>
-          <circle class="radar-ring" cx="400" cy="400" r="220"/>
-          <circle class="radar-ring" cx="400" cy="400" r="320"/>
-          <circle class="radar-ring" cx="400" cy="400" r="400"/>
-          <line x1="400" y1="0" x2="400" y2="800" stroke="var(--border)" stroke-width="1"/>
-          <line x1="0" y1="400" x2="800" y2="400" stroke="var(--border)" stroke-width="1"/>
-          <g class="radar-sweep">
-            <path d="M400,400 L400,0 A400,400 0 0,1 683,516 Z" fill="url(#sweepGrad)"/>
-          </g>
-          <defs>
-            <linearGradient id="sweepGrad" x1="400" y1="400" x2="683" y2="516" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#c6f135" stop-opacity="0.28"/>
-              <stop offset="1" stop-color="#c6f135" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <circle class="radar-node pulse" cx="400" cy="280" r="4"/>
-          <circle class="radar-node pulse" cx="520" cy="470" r="3" style="animation-delay:.6s"/>
-          <circle class="radar-node pulse" cx="300" cy="520" r="3" style="animation-delay:1.2s"/>
-          <circle class="radar-node" cx="400" cy="400" r="5"/>
-        </svg>
+  <div class="wrap hero-body">
+    <p class="eyebrow hero-kicker">Korea's Operational Nexus of Intelligent eXecution</p>
+    <h1 class="display" aria-label="Build drones at national speed">
+      <span class="line"><span>Build drones</span></span>
+      <span class="line"><span>at <em>national</em></span></span>
+      <span class="line"><span>speed.</span></span>
+    </h1>
+    <div class="hero-foot">
+      <div>
+        <p class="hero-ko">Low-cost drones, built and deployed at <b>national speed</b>.</p>
+        <p class="hero-sub">KEONIX integrates additive-manufacturing-based high-speed mass production with a full-lifecycle operations and training system, building an execution hub that delivers real drone capability all the way down to individual soldiers and small units.</p>
+      </div>
+      <div class="hero-cta">
+        <a href="#solution" class="btn solid">Explore the solution <span class="arr">→</span></a>
+        <a href="#contact" class="btn">Contact us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-label="Key figures">
+  <div class="ticker-track">
+    <div class="tk"><b>US$15.8B</b><span>Global military drone market (TAM, 2025)</span></div>
+    <div class="tk"><b>70%+</b><span>Target production automation rate at PoC</span></div>
+    <div class="tk"><b>±5%</b><span>Target repeatability tolerance in production</span></div>
+    <div class="tk"><b>2027</b><span>Target for automated mass production of FPV training drone frames</span></div>
+    <div class="tk"><b>KAIST × CAU</b><span>Co-designing research teams</span></div>
+    <div class="tk"><b>POCHEON</b><span>National drone hub partner</span></div>
+    <div class="tk" aria-hidden="true"><b>US$15.8B</b><span>Global military drone market (TAM, 2025)</span></div>
+    <div class="tk" aria-hidden="true"><b>70%+</b><span>Target production automation rate at PoC</span></div>
+    <div class="tk" aria-hidden="true"><b>±5%</b><span>Target repeatability tolerance in production</span></div>
+    <div class="tk" aria-hidden="true"><b>2027</b><span>Target for automated mass production of FPV training drone frames</span></div>
+    <div class="tk" aria-hidden="true"><b>KAIST × CAU</b><span>Co-designing research teams</span></div>
+    <div class="tk" aria-hidden="true"><b>POCHEON</b><span>National drone hub partner</span></div>
+  </div>
+</div>
+
+<!-- ============ MISSION ============ -->
+<section class="sec" id="mission">
+  <div class="wrap">
+    <p class="eyebrow">Mission &amp; Vision</p>
+    <p class="statement" id="statement">Drone warfare is won not by the performance of a single airframe, but by <span class="hl">supply chains and operational capability</span>. KEONIX is designing a system that gives Korea both.</p>
+
+    <div class="mission-grid rv">
+      <div>
+        <span class="mono">Vision</span>
+        <h3>Additive Manufacturing × Full-Lifecycle Operations</h3>
+        <p>We unify additive-manufacturing-based production and full-lifecycle operations into a single system, enabling high-speed mass production and wide operational adoption of drones at the same time.</p>
+      </div>
+      <div>
+        <span class="mono">Opportunity</span>
+        <h3>Low-cost, rapid production is a strategic advantage</h3>
+        <p>As drones prove their cost-exchange efficiency on the battlefield, nations are moving beyond simple price competition to secure sovereign drone production and operational capabilities.</p>
       </div>
     </div>
 
-    <div class="wrap hero-inner">
-      <span class="eyebrow">Korea's Operational Nexus of Intelligent eXecution</span>
-      <h1 class="hero-title">Low-cost drones,<br>built and deployed at <span class="accent">national speed</span></h1>
-      <p class="hero-sub">KEONIX integrates additive-manufacturing-based high-speed mass production with a full-lifecycle operations and training system, building an execution hub that delivers real drone capability all the way down to individual soldiers and small units.</p>
-      <div class="hero-ctas">
-        <a href="#solution" class="btn btn-primary">Explore the solution →</a>
-        <a href="#contact" class="btn btn-ghost">Contact us</a>
-      </div>
-      <div class="legal-strip">
-        <div class="row"><span class="k">Company</span><span class="v">KEONIX Labs</span></div>
-        <div class="row"><span class="k">CEO</span><span class="v">Yongjin Yoon</span></div>
-        <div class="row"><span class="k">Reg. No.</span><span class="v">Business Registration No. 687-86-03619</span></div>
-        <div class="row"><span class="k">Address</span><span class="v">Room 203-J88, 2F, 15 Gyeryong-ro 105beon-gil, Yuseong-gu, Daejeon, Republic of Korea</span></div>
-        <div class="row"><span class="k">Email</span><a class="v" href="mailto:contact@keonix.co.kr">contact@keonix.co.kr</a></div>
-        <div class="row"><span class="k">Tel</span><a class="v" href="tel:+82423503253">+82-42-350-3253</a></div>
-      </div>
+    <div class="stages">
+      <div class="stage rv"><div class="num">01</div><h4>Secure low-cost, rapid production technology</h4><p>Develop and secure rapid, low-cost drone production technology based on additive manufacturing.</p></div>
+      <div class="stage rv"><div class="num">02</div><h4>Build distributed production infrastructure</h4><p>Miniaturize and advance production technology to expand into distributed, field-level production.</p></div>
+      <div class="stage rv"><div class="num">03</div><h4>Scale through education &amp; training</h4><p>Build education and training programs for production and operations, and roll them out across target organizations.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- STATS -->
-  <section class="stat-strip reveal">
-    <div class="stat">
-      <div class="stat-num">US$15.8B</div>
-      <div class="stat-label">Global military drone market (TAM, 2025)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">70%+</div>
-      <div class="stat-label">Target production automation rate at PoC</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">±5%</div>
-      <div class="stat-label">Target repeatability tolerance in production</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">2027</div>
-      <div class="stat-label">Target for automated mass production of FPV training drone frames</div>
-    </div>
-  </section>
-
-  <!-- MISSION / VISION -->
-  <section class="section" id="mission">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Mission &amp; Vision</span>
-        <h2 class="section-title">We build the technology, deploy it in the field,<br>and scale it through training.</h2>
-        <p class="section-sub">Drone warfare is won not by the performance of a single airframe, but by supply chains and operational capability. KEONIX is designing a system that gives Korea both.</p>
+<!-- ============ SOLUTION ============ -->
+<section class="sec flush" id="solution">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Solution</p>
+        <h2 class="title">Autonomous drone production,<br>powered by additive manufacturing</h2>
       </div>
+      <p class="lede">A two-axis system co-designed by researchers at KAIST and Chung-Ang University, connecting drone design, production, assembly, and operation in a single flow.</p>
+    </div>
 
-      <div class="grid-2 reveal">
-        <div class="card">
-          <span class="card-tag">Vision</span>
-          <h3>Additive Manufacturing × Full-Lifecycle Operations</h3>
-          <p>We unify additive-manufacturing-based production and full-lifecycle operations into a single system, enabling high-speed mass production and wide operational adoption of drones at the same time.</p>
+    <div class="foundry">
+      <div class="printer rv">
+        <div class="printer-top"><span>BUILD PLATE · 300 × 300 MM</span><span>X-FRAME · INFILL ±45°</span></div>
+        <canvas id="printCanvas" aria-label="Simulation of a drone frame being printed layer by layer" role="img"></canvas>
+        <div class="printer-bot">
+          <span>LAYER <b id="pLayer">001</b> / 120</span>
+          <span>LAYER H <b>0.2 MM</b></span>
+          <span>PROGRESS <b id="pPct">0%</b></span>
         </div>
-        <div class="card">
-          <span class="card-tag">Opportunity</span>
-          <h3>Low-cost, rapid production is a strategic advantage</h3>
-          <p>As drones prove their cost-exchange efficiency on the battlefield, nations are moving beyond simple price competition to secure sovereign drone production and operational capabilities.</p>
-        </div>
+        <div class="term" id="term" aria-hidden="true"></div>
       </div>
 
-      <div class="grid-3">
-        <div class="cap"><span class="cap-num">STAGE 01</span><h4>Secure low-cost, rapid production technology</h4><p>Develop and secure rapid, low-cost drone production technology based on additive manufacturing.</p></div>
-        <div class="cap"><span class="cap-num">STAGE 02</span><h4>Build distributed production infrastructure</h4><p>Miniaturize and advance production technology to expand into distributed, field-level production.</p></div>
-        <div class="cap"><span class="cap-num">STAGE 03</span><h4>Scale through education &amp; training</h4><p>Build education and training programs for production and operations, and roll them out across target organizations.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOLUTION -->
-  <section class="section" id="solution">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Solution</span>
-        <h2 class="section-title">Autonomous drone production<br>powered by additive manufacturing</h2>
-        <p class="section-sub">A two-axis system co-designed by researchers at KAIST and Chung-Ang University, connecting drone design, production, assembly, and operation in a single flow.</p>
-      </div>
-
-      <div class="grid-2 reveal">
-        <div class="card">
-          <span class="card-tag">Axis 01 — Intelligent Drone Foundry</span>
+      <div class="axes">
+        <article class="axis rv">
+          <span class="corner"></span>
+          <span class="mono">Axis 01</span>
           <h3>Intelligent Drone Foundry</h3>
+          <div class="en">Design · Produce · Assemble · Operate</div>
           <p>An integrated platform that centrally and securely manages drone design, production, assembly, application, and operation. AI automatically derives the optimal design for each situation, which is then produced and assembled through 3D printing.</p>
-        </div>
-        <div class="card">
-          <span class="card-tag">Axis 02 — Adaptive Drone Manufacturing</span>
+        </article>
+        <article class="axis rv">
+          <span class="corner"></span>
+          <span class="mono">Axis 02</span>
           <h3>Rapid, Field-Adaptive Production</h3>
+          <div class="en">Adaptive Drone Manufacturing</div>
           <p>Drones are built on-site, on demand, using Speed 3D printers and modular design. We advance structural technology so airframe stiffness and flexibility can be achieved quickly and at low cost.</p>
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <div class="cap"><span class="cap-num">/ 01</span><h4>Integrated drone operations system</h4><p>Design and develop an integrated platform linking design, production, assembly, application, and operation.</p></div>
-        <div class="cap"><span class="cap-num">/ 02</span><h4>AI field-adaptive design &amp; auto-assembly</h4><p>Automatically derive mission-optimal designs from baseline designs and produce them via 3DP.</p></div>
-        <div class="cap"><span class="cap-num">/ 03</span><h4>Airframe material development &amp; optimization</h4><p>Develop and optimize mission-specific materials for FPV, ISR, counter-drone, and more.</p></div>
-        <div class="cap"><span class="cap-num">/ 04</span><h4>Rapid additive manufacturing technology</h4><p>Develop rapid production technology based on Speed 3D printers and modular design.</p></div>
-        <div class="cap"><span class="cap-num">/ 05</span><h4>Advanced airframe stiffness &amp; flexibility</h4><p>Improve both stiffness and flexibility of airframe structures for low-cost, rapid production.</p></div>
-        <div class="cap"><span class="cap-num">/ 06</span><h4>Plug&amp;Play airframe architecture</h4><p>Research new drone airframe structures and design them for modular assembly.</p></div>
+        </article>
       </div>
     </div>
-  </section>
 
-  <!-- PRODUCT / SYSTEM GALLERY -->
-  <section class="section" id="product">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">System in the Field</span>
-        <h2 class="section-title">A mobile production unit<br>in a single container</h2>
-        <p class="section-sub">Additive manufacturing equipment, materials, and power are integrated within a standard container footprint — a field-ready production unit that can be deployed anywhere.</p>
-      </div>
+    <div class="caps">
+      <div class="cap rv"><span class="idx">/01</span><h4>Integrated drone operations system</h4><p>Design and develop an integrated platform linking design, production, assembly, application, and operation.</p></div>
+      <div class="cap rv"><span class="idx">/02</span><h4>AI field-adaptive design &amp; auto-assembly</h4><p>Automatically derive mission-optimal designs from baseline designs and produce them via 3DP.</p></div>
+      <div class="cap rv"><span class="idx">/03</span><h4>Airframe material development &amp; optimization</h4><p>Develop and optimize mission-specific materials for FPV, ISR, counter-drone, and more.</p></div>
+      <div class="cap rv"><span class="idx">/04</span><h4>Rapid additive manufacturing technology</h4><p>Develop rapid production technology based on Speed 3D printers and modular design.</p></div>
+      <div class="cap rv"><span class="idx">/05</span><h4>Advanced airframe stiffness &amp; flexibility</h4><p>Improve both stiffness and flexibility of airframe structures for low-cost, rapid production.</p></div>
+      <div class="cap rv"><span class="idx">/06</span><h4>Plug&amp;Play airframe architecture</h4><p>Research new drone airframe structures and design them for modular assembly.</p></div>
+    </div>
+  </div>
+</section>
 
-      <div class="product-feature reveal">
-        <span class="shot-tag">CAD RENDER — 22G2 MODULAR UNIT</span>
-        <img src="../assets/product-render-unit.png" alt="CAD render of the KEONIX mobile additive manufacturing unit" loading="lazy">
+<!-- ============ SYSTEM ============ -->
+<section class="sec system" id="system">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">System in the Field</p>
+        <h2 class="title">A mobile production unit<br>in a single container</h2>
       </div>
-      <div class="product-row reveal">
-        <div class="product-shot">
-          <img src="../assets/product-field-deployed.png" alt="KEONIX production unit deployed in the field" loading="lazy">
-          <div class="cap"><span class="k">FIELD DEPLOYMENT</span><span class="t">Deployed in the field</span></div>
-        </div>
-        <div class="product-shot">
-          <img src="../assets/product-drone-fleet.png" alt="Drone fleet staged in front of the production unit" loading="lazy">
-          <div class="cap"><span class="k">OPERATIONAL READINESS</span><span class="t">Production unit with a deployed drone fleet</span></div>
-        </div>
+      <p class="lede">Additive manufacturing equipment, materials, and power are integrated within a standard container footprint, making a field-ready production unit that can be deployed anywhere.</p>
+    </div>
+
+    <div class="unit-wrap rv">
+      <div class="unit-grid" aria-hidden="true"></div>
+      <div class="unit">
+        <img class="unit-img" src="../assets/product-render-unit.png" alt="CAD render of the 22G2 modular production unit: additive manufacturing equipment in the left container, a robotic assembly cell in the right." loading="lazy" width="1656" height="950">
+        <button class="hot" style="left:27%;top:52%" aria-label="Additive manufacturing cell"><span class="tip"><small>MODULE A</small>Additive manufacturing cell · 3D printers</span></button>
+        <button class="hot" style="left:76%;top:28%" aria-label="Robotic assembly cell"><span class="tip"><small>MODULE B</small>Robotic assembly cell</span></button>
+        <button class="hot left" style="left:67%;top:18%" aria-label="Finished airframe rack"><span class="tip"><small>RACK</small>Finished airframes · inspection</span></button>
+        <button class="hot left" style="left:10%;top:60%" aria-label="Material supply"><span class="tip"><small>SUPPLY</small>Materials · power supply</span></button>
       </div>
     </div>
-  </section>
 
-  <!-- ECOSYSTEM (Project Gaecheon) -->
-  <section class="section" id="ecosystem">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Project Gaecheon (開天)</span>
-        <h2 class="section-title">Building and validating an integrated<br>defense drone ecosystem</h2>
-        <p class="section-sub">Six stages, from design to validation, connected in a single loop — so real-world operational data feeds straight back into design.</p>
+    <dl class="specs rv">
+      <div><dt>Form factor</dt><dd>22G2 standard container footprint</dd></div>
+      <div><dt>Module A</dt><dd>Additive manufacturing · materials · power</dd></div>
+      <div><dt>Module B</dt><dd>Auto-assembly · inspection · storage</dd></div>
+      <div><dt>Deploy</dt><dd>Truck transport, set up on site</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="deploy" aria-label="Field deployment">
+  <img src="../assets/product-field-deployed.png" alt="Mobile production unit deployed on an airfield at dusk" loading="lazy" id="deployImg">
+  <div class="wrap deploy-body">
+    <p class="eyebrow">Field Deployment</p>
+    <h2 class="display">Deploy<br>anywhere<span>.</span></h2>
+    <div class="deploy-row">
+      <p>The production unit deploys straight to forward positions. The factory moves with the troops.</p>
+      <div class="deploy-tags"><span class="tag">FORWARD BASE</span><span class="tag">AIRFIELD</span><span class="tag">TRAINING SITE</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GAECHEON ============ -->
+<section class="sec" id="gaecheon">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Project Gaecheon · 開天</p>
+        <h2 class="title">Building and validating an integrated<br>defense drone ecosystem</h2>
+      </div>
+      <p class="lede">Six stages, from design to validation, connected in a single loop, so real-world operational data feeds straight back into design.</p>
+    </div>
+
+    <div class="cycle">
+      <div class="ring rv">
+        <svg viewBox="-60 0 560 440" role="group" aria-label="Project Gaecheon six-stage loop">
+          <circle cx="220" cy="220" r="160" fill="none" stroke="var(--line-2)" stroke-width="1" stroke-dasharray="2 6"></circle>
+          <circle cx="220" cy="220" r="160" fill="none" stroke="var(--accent)" stroke-width="1.5" id="ringArc" stroke-dasharray="0 1006" transform="rotate(-90 220 220)" style="transition:stroke-dasharray .8s var(--ease)"></circle>
+          <circle cx="220" cy="220" r="118" fill="none" stroke="var(--line)" stroke-width="1"></circle>
+          <g id="ringNodes"></g>
+        </svg>
+        <div class="ring-core">
+          <div>
+            <div class="display" id="ringNum">01</div>
+            <div class="mono" id="ringEn">DESIGN</div>
+          </div>
+        </div>
       </div>
 
-      <div class="eco-grid reveal">
-        <div class="eco-cell active"><span class="idx">01 / DESIGN</span><h4>Design</h4><p>Define mission requirements from a central database</p></div>
-        <div class="eco-cell"><span class="idx">02 / MANUFACTURE</span><h4>Manufacture</h4><p>Rapid prototyping and production across distributed facilities</p></div>
-        <div class="eco-cell"><span class="idx">03 / TEST &amp; VALIDATE</span><h4>Test &amp; Validate</h4><p>Realistic scenario testing at the Pocheon hub</p></div>
-        <div class="eco-cell"><span class="idx">04 / DEPLOY</span><h4>Deploy</h4><p>Field validated systems to operational units</p></div>
-        <div class="eco-cell"><span class="idx">05 / TRAIN</span><h4>Train</h4><p>Soldiers master system operation in AR/VR environments</p></div>
-        <div class="eco-cell active"><span class="idx">06 / FEEDBACK</span><h4>Feedback · Redesign</h4><p>Collect operational data and improve designs immediately</p></div>
+      <div>
+        <div class="stepcard" aria-live="polite">
+          <span class="mono" id="stepTag">01 / DESIGN</span>
+          <h3 id="stepTitle">Design</h3>
+          <p id="stepDesc">Define mission requirements from a central database</p>
+        </div>
+        <div class="steplist" id="stepList" aria-label="Choose a stage"></div>
       </div>
-      <div class="hub-banner">
+    </div>
+
+    <div class="hub rv">
+      <div class="coord"><b>STRATEGIC HUB</b>37.8949°N<br>127.2003°E<br>POCHEON</div>
+      <div>
+        <h3>Strategic Hub Partner · Pocheon City</h3>
+        <p>Selected two years in a row for the Ministry of Land, Infrastructure and Transport's Drone Demonstration City program, Pocheon is our execution base, jointly developing an advanced domestic drone industrial complex. The Pocheon National Drone Hub, with additive manufacturing facilities, an AR/VR training ground, and integrated test airspace, is the engine of this loop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section class="sec flush" id="roadmap">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Scaling-Up Roadmap</p>
+        <h2 class="title">By 2035, a leader of the<br>K-Defense drone ecosystem</h2>
+      </div>
+      <p class="lede">We grow from pilot (training &amp; evaluation) → procurement &amp; center expansion → scale-up, using domestic procurement as a springboard for export packages.</p>
+    </div>
+
+    <div class="road">
+      <div class="phase rv">
+        <div class="bar-area"><div class="bar" style="--h:33%"><span>KRW 10B<small>VALUATION</small></span></div></div>
+        <div class="phase-info"><span class="mono">Startup</span><div class="yr">2025 – 2026</div><h4>Founding Team &amp; MVP</h4><p>Launch MVP at the Pocheon Drone Hub; develop training programs for civilian and military audiences</p></div>
+      </div>
+      <div class="phase rv">
+        <div class="bar-area"><div class="bar" style="--h:57%"><span>KRW 50B<small>VALUATION</small></span></div></div>
+        <div class="phase-info"><span class="mono">R&amp;D &amp; IP</span><div class="yr">2027</div><h4>Build the Drone Foundry</h4><p>Expand partnerships with military institutions, build the Intelligent Drone Foundry, file patents, and complete PoC</p></div>
+      </div>
+      <div class="phase rv">
+        <div class="bar-area"><div class="bar" style="--h:83%"><span>KRW 300B<small>VALUATION</small></span></div></div>
+        <div class="phase-info"><span class="mono">Scale-up</span><div class="yr">2028 – 2030</div><h4>Full-Scale Procurement Contracts</h4><p>Expand domestic defense procurement; build K-Defense export packages and extend the platform</p></div>
+      </div>
+      <div class="phase rv">
+        <div class="bar-area"><div class="bar" style="--h:100%"><span>KRW 1T+<small>VALUATION</small></span></div></div>
+        <div class="phase-info"><span class="mono">M&amp;A Exit</span><div class="yr">2031 –</div><h4>Strategic Exit · Global Expansion</h4><p>Global expansion through strategic M&amp;A with a major Korean defense company</p></div>
+      </div>
+    </div>
+    <p class="mono scale-note">Target valuation · bar height on a log scale</p>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="sec system" id="team">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Core Team &amp; Leadership</p>
+        <h2 class="title">Experts in defense, drones, AI,<br>manufacturing &amp; training</h2>
+      </div>
+      <p class="lede">Specialists in additive manufacturing, Physical AI, and defense business design production and operations together, as one team.</p>
+    </div>
+
+    <div class="team">
+      <article class="member rv">
+        <div class="photo"><img src="../assets/team-yoon-yongjin.png" alt="Yongjin Yoon" loading="lazy"><span class="role">CEO</span></div>
+        <h3>Yongjin Yoon</h3>
+        <p class="deg">Ph.D. Stanford Univ. Mechanical Engineering / Financial Engineering (Minor)</p>
+        <ul><li>Defense &amp; drone industry expert; leads business strategy and fundraising</li><li>Extensive military/civilian drone network and deep understanding of defense procurement &amp; policy</li></ul>
+      </article>
+      <article class="member rv">
+        <div class="photo"><img src="../assets/team-choi-haejin.png" alt="Haejin Choi" loading="lazy"><span class="role">CTO</span></div>
+        <h3>Haejin Choi</h3>
+        <p class="deg">Ph.D., Georgia Institute of Technology</p>
+        <ul><li>Leading Korean authority on 3D-printing-based additive manufacturing</li><li>President, Smart Additive Manufacturing Division, Korean Society of Mechanical Engineers</li></ul>
+      </article>
+      <article class="member rv">
+        <div class="photo"><img src="../assets/team-park-sangin.png" alt="Sangin Park" loading="lazy"><span class="role">R&amp;D Director · 3DP MFG</span></div>
+        <h3>Sangin Park</h3>
+        <p class="deg">Ph.D., Georgia Institute of Technology</p>
+        <ul><li>Leads additive-manufacturing-based drone design and production process development</li><li>Defines production strategy and the process R&amp;D roadmap</li></ul>
+      </article>
+      <article class="member rv">
+        <div class="photo"><img src="../assets/team-kim-hyeongcheol.png" alt="Hyeongcheol Kim" loading="lazy"><span class="role">R&amp;D Director · Physical AI</span></div>
+        <h3>Hyeongcheol Kim</h3>
+        <p class="deg">CS Ph.D. National University of Singapore</p>
+        <ul><li>Leads design of AI-integrated drone training and production systems</li><li>Member, KAIST InnoCORE PRISM-AI Research Group</li></ul>
+      </article>
+    </div>
+
+    <div class="advisors rv">
+      <span class="mono">Advisors &amp; Network</span>
+      <span>We are supported by an advisory group spanning military operations &amp; tactics, defense procurement &amp; policy, aviation safety &amp; certification, and industry–academia–research networks, along with key members in legal &amp; finance, industrial engineering, and technical advisory.</span>
+    </div>
+
+    <div class="staff" id="staff">
+      <div class="sec-head">
         <div>
-          <span class="label">Strategic Hub Partner · Pocheon City</span>
-          <p>Selected two years in a row for the Ministry of Land, Infrastructure and Transport's Drone Demonstration City program, Pocheon is our execution base, jointly developing an advanced domestic drone industrial complex. The Pocheon National Drone Hub — with additive manufacturing facilities, an AR/VR training ground, and integrated test airspace — is the engine of this loop.</p>
+          <p class="eyebrow">Participating Personnel</p>
+          <h2 class="title">The people behind execution</h2>
+        </div>
+        <p class="lede">From additive manufacturing standards to smart factories and defense program management, hands-on experts in each field power KEONIX's execution.</p>
+      </div>
+      <div class="staff-grid rv">
+        <div class="person">
+          <img src="../assets/team-kim-samyeon.png" alt="Samyeon Kim" loading="lazy">
+          <div><span class="mono">Industrial Engineering Advisor</span><h4>Prof. Samyeon Kim</h4>
+            <ul><li>Professor, Dept. of Mechanical Engineering, Jeonju University</li><li>Member, Singapore Additive Manufacturing Technical Committee / ASTM F42.04 Design Subcommittee</li><li>Modular Design Advisor, LGE; formerly researcher at NTU 3D Printing Center · NIST/SUTD</li></ul></div>
+        </div>
+        <div class="person">
+          <img src="../assets/team-won-younggyu.png" alt="Younggyu Won" loading="lazy">
+          <div><span class="mono">Tech Advisor</span><h4>Younggyu Won</h4>
+            <ul><li>CTO, Trend Seoul</li><li>Formerly led development of a smart-manufacturing &amp; 3D-printing-based FaaS platform</li><li>Formerly contributed to ETRI Smart Factory projects / IITP national R&amp;D programs</li></ul></div>
+        </div>
+        <div class="person">
+          <img src="../assets/team-kim-minseok.png" alt="Minseok Kim" loading="lazy">
+          <div><span class="mono">Project Manager</span><h4>Dr. Minseok Kim</h4>
+            <ul><li>Postdoctoral Researcher, KAIST Mechanical Engineering Research Institute</li><li>General Manager, Daejeon Defense-Specialized R&amp;D Institute</li><li>Managed a 5-year, KRW 49B program (2022–2026)</li></ul></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ROADMAP -->
-  <section class="section" id="roadmap">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Scaling-Up Roadmap</span>
-        <h2 class="section-title">By 2035, a leader of the<br>K-Defense drone ecosystem</h2>
-        <p class="section-sub">We grow from pilot (training &amp; evaluation) → procurement &amp; center expansion → scale-up, using domestic procurement as a springboard for export packages.</p>
+<!-- ============ CAREERS ============ -->
+<section class="sec" id="careers">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Careers</p>
+        <h2 class="title">Help us design the execution<br>speed of national security</h2>
       </div>
+      <p class="lede">Specific job postings are in preparation. If you're interested in a position or have a collaboration proposal, email us at contact@keonix.co.kr.</p>
+    </div>
+    <div class="jobs">
+      <a class="job rv" href="mailto:contact@keonix.co.kr?subject=%5BKEONIX%5D%20Careers%20Inquiry"><h3>Additive Manufacturing · Production Engineer</h3><span class="meta">R&amp;D · Daejeon</span><span class="go">→</span></a>
+      <a class="job rv" href="mailto:contact@keonix.co.kr?subject=%5BKEONIX%5D%20Careers%20Inquiry"><h3>AI · Drone Operations Platform Developer</h3><span class="meta">R&amp;D · Daejeon / Pocheon</span><span class="go">→</span></a>
+      <a class="job rv" href="mailto:contact@keonix.co.kr?subject=%5BKEONIX%5D%20Careers%20Inquiry"><h3>Education &amp; Training Program Planner</h3><span class="meta">Education · Pocheon</span><span class="go">→</span></a>
+      <a class="job rv" href="mailto:contact@keonix.co.kr?subject=%5BKEONIX%5D%20Careers%20Inquiry"><h3>Defense Business Development · Procurement</h3><span class="meta">Business · Daejeon</span><span class="go">→</span></a>
+    </div>
+  </div>
+</section>
 
-      <div class="roadmap reveal">
-        <div class="rm-row">
-          <div class="rm-phase">STARTUP<span class="rm-year">2025 – 2026</span></div>
-          <div class="rm-body"><h4>Founding Team &amp; MVP</h4><p>Launch MVP at the Pocheon Drone Hub; develop training programs for civilian and military audiences</p></div>
-          <div class="rm-val"><span class="k">VALUATION</span>KRW 10B</div>
-        </div>
-        <div class="rm-row">
-          <div class="rm-phase">R&amp;D &amp; IP<span class="rm-year">2027</span></div>
-          <div class="rm-body"><h4>Build the Drone Foundry</h4><p>Expand partnerships with military institutions, build the Intelligent Drone Foundry, file patents, and complete PoC</p></div>
-          <div class="rm-val"><span class="k">VALUATION</span>KRW 50B</div>
-        </div>
-        <div class="rm-row">
-          <div class="rm-phase">SCALE-UP<span class="rm-year">2028 – 2030</span></div>
-          <div class="rm-body"><h4>Full-Scale Procurement Contracts</h4><p>Expand domestic defense procurement; build K-Defense export packages and extend the platform</p></div>
-          <div class="rm-val"><span class="k">VALUATION</span>KRW 300B</div>
-        </div>
-        <div class="rm-row">
-          <div class="rm-phase">M&amp;A EXIT<span class="rm-year">2031 –</span></div>
-          <div class="rm-body"><h4>Strategic Exit · Global Expansion</h4><p>Global expansion through strategic M&amp;A with a major Korean defense company</p></div>
-          <div class="rm-val"><span class="k">VALUATION</span>KRW 1T+</div>
-        </div>
+<!-- ============ CONTACT ============ -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2>The future of Korea's defense.<br><span>Let's shape it</span> together.</h2>
+    <div class="contact-grid">
+      <dl class="info">
+        <div><dt>Company</dt><dd>KEONIX Labs</dd></div>
+        <div><dt>Address</dt><dd>Room 203-J88, 2F, 15 Gyeryong-ro 105beon-gil, Yuseong-gu, Daejeon 34187, Republic of Korea</dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:contact@keonix.co.kr">contact@keonix.co.kr</a></dd></div>
+        <div><dt>Tel</dt><dd><a href="tel:+82423503253">+82-42-350-3253</a></dd></div>
+      </dl>
+      <div class="contact-cta">
+        <p class="lead">We welcome inquiries from investors, military &amp; government partners, and media.</p>
+        <p>Whether it's an IR deck request, a collaboration proposal, or a visit to the Pocheon Drone Hub, email us and we'll get back to you promptly.</p>
+        <a href="mailto:contact@keonix.co.kr" class="btn solid">Send an email <span class="arr">→</span></a>
       </div>
     </div>
-  </section>
-
-  <!-- TEAM -->
-  <section class="section" id="team">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Core Team &amp; Leadership</span>
-        <h2 class="section-title">Experts in defense, drones,<br>AI, manufacturing &amp; training</h2>
-      </div>
-
-      <div class="team-grid reveal">
-        <div class="member">
-          <div class="member-photo"><img src="../assets/team-yoon-yongjin.png" alt="Yongjin Yoon, CEO"></div>
-          <div class="member-body">
-            <span class="member-role">CEO</span>
-            <h4>Yongjin Yoon</h4>
-            <ul>
-              <li>Ph.D. Stanford Univ. Mechanical Engineering / Financial Engineering (Minor)</li>
-              <li>Defense &amp; drone industry expert; leads business strategy and fundraising</li>
-              <li>Extensive military/civilian drone network and deep understanding of defense procurement &amp; policy</li>
-            </ul>
-          </div>
-        </div>
-        <div class="member">
-          <div class="member-photo"><img src="../assets/team-choi-haejin.png" alt="Haejin Choi, CTO"></div>
-          <div class="member-body">
-            <span class="member-role">CTO</span>
-            <h4>Haejin Choi</h4>
-            <ul>
-              <li>Ph.D., Georgia Institute of Technology</li>
-              <li>Leading Korean authority on 3D-printing-based additive manufacturing</li>
-              <li>President, Smart Additive Manufacturing Division, Korean Society of Mechanical Engineers</li>
-            </ul>
-          </div>
-        </div>
-        <div class="member">
-          <div class="member-photo"><img src="../assets/team-park-sangin.png" alt="Sangin Park, R&amp;D Director"></div>
-          <div class="member-body">
-            <span class="member-role">R&amp;D Director · 3DP-based Manufacturing</span>
-            <h4>Sangin Park</h4>
-            <ul>
-              <li>Ph.D., Georgia Institute of Technology</li>
-              <li>Leads additive-manufacturing-based drone design and production process development</li>
-              <li>Defines production strategy and the process R&amp;D roadmap</li>
-            </ul>
-          </div>
-        </div>
-        <div class="member">
-          <div class="member-photo"><img src="../assets/team-kim-hyeongcheol.png" alt="Hyeongcheol Kim, R&amp;D Director"></div>
-          <div class="member-body">
-            <span class="member-role">R&amp;D Director · Physical AI &amp; Training</span>
-            <h4>Hyeongcheol Kim</h4>
-            <ul>
-              <li>CS Ph.D. National University of Singapore</li>
-              <li>Leads design of AI-integrated drone training and production systems</li>
-              <li>Member, KAIST InnoCORE PRISM-AI Research Group</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="advisor-note">
-        <b>Advisors &amp; Network</b> — We are supported by an advisory group spanning military operations &amp; tactics, defense procurement &amp; policy, aviation safety &amp; certification, and industry–academia–research networks, along with key members in legal &amp; finance, industrial engineering, and technical advisory.
-      </div>
-    </div>
-  </section>
-
-  <!-- STAFF / PARTICIPATING PERSONNEL -->
-  <section class="section" id="staff">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Participating Personnel</span>
-        <h2 class="section-title">Participating Personnel</h2>
-        <p class="section-sub">From additive manufacturing standards to smart factories and defense program management — hands-on experts in each field power KEONIX's execution.</p>
-      </div>
-
-      <div class="staff-grid reveal">
-        <div class="staff-card">
-          <div class="staff-photo"><img src="../assets/team-kim-samyeon.png" alt="Prof. Samyeon Kim"></div>
-          <div class="staff-body">
-            <span class="member-role">Industrial Engineering Advisor</span>
-            <h4>Prof. Samyeon Kim</h4>
-            <ul>
-              <li>Professor, Dept. of Mechanical Engineering, Jeonju University</li>
-              <li>Member, Singapore Additive Manufacturing Technical Committee / ASTM F42.04 Design Subcommittee</li>
-              <li>Modular Design Advisor, LGE; formerly researcher at NTU 3D Printing Center · NIST/SUTD</li>
-            </ul>
-          </div>
-        </div>
-        <div class="staff-card">
-          <div class="staff-photo"><img src="../assets/team-won-younggyu.png" alt="Younggyu Won, CEO"></div>
-          <div class="staff-body">
-            <span class="member-role">Tech Advisor</span>
-            <h4>Younggyu Won</h4>
-            <ul>
-              <li>CTO, Trend Seoul</li>
-              <li>Formerly led development of a smart-manufacturing &amp; 3D-printing-based FaaS platform</li>
-              <li>Formerly contributed to ETRI Smart Factory projects / IITP national R&amp;D programs</li>
-            </ul>
-          </div>
-        </div>
-        <div class="staff-card">
-          <div class="staff-photo"><img src="../assets/team-kim-minseok.png" alt="Dr. Minseok Kim"></div>
-          <div class="staff-body">
-            <span class="member-role">Project Manager</span>
-            <h4>Dr. Minseok Kim</h4>
-            <ul>
-              <li>Postdoctoral Researcher, KAIST Mechanical Engineering Research Institute</li>
-              <li>General Manager, Daejeon Defense-Specialized R&amp;D Institute</li>
-              <li>Managed a 5-year, KRW 49B program (2022–2026)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CAREERS -->
-  <section class="section" id="careers">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Careers</span>
-        <h2 class="section-title">We're looking for people to design<br>the execution speed of national security</h2>
-        <p class="section-sub">Specific job postings are in preparation. If you're interested in a position or have a collaboration proposal, feel free to reach out by email.</p>
-      </div>
-      <div class="careers-grid reveal">
-        <a class="job" href="mailto:contact@keonix.co.kr?subject=%5BKEONIX%5D%20Careers%20Inquiry">
-          <div><div class="job-title">Additive Manufacturing · Production Engineer</div><div class="job-tag">R&amp;D · Daejeon</div></div>
-          <div class="job-arrow">→</div>
-        </a>
-        <a class="job" href="mailto:contact@keonix.co.kr?subject=%5BKEONIX%5D%20Careers%20Inquiry">
-          <div><div class="job-title">AI · Drone Operations Platform Developer</div><div class="job-tag">R&amp;D · Daejeon / Pocheon</div></div>
-          <div class="job-arrow">→</div>
-        </a>
-        <a class="job" href="mailto:contact@keonix.co.kr?subject=%5BKEONIX%5D%20Careers%20Inquiry">
-          <div><div class="job-title">Education &amp; Training Program Planner</div><div class="job-tag">Education · Pocheon</div></div>
-          <div class="job-arrow">→</div>
-        </a>
-        <a class="job" href="mailto:contact@keonix.co.kr?subject=%5BKEONIX%5D%20Careers%20Inquiry">
-          <div><div class="job-title">Defense Business Development · Procurement</div><div class="job-tag">Business · Daejeon</div></div>
-          <div class="job-arrow">→</div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section" id="contact" style="border-bottom:none;">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Contact</span>
-        <h2 class="section-title">The future of Korea's defense —<br>let's shape it together, now.</h2>
-      </div>
-
-      <div class="contact-grid reveal">
-        <div>
-          <div class="contact-item">
-            <div class="k">Company</div>
-            <div class="v">KEONIX Labs</div>
-          </div>
-          <div class="contact-item">
-            <div class="k">Address</div>
-            <div class="v">Room 203-J88, 2F, 15 Gyeryong-ro 105beon-gil, Yuseong-gu, Daejeon 34187, Republic of Korea</div>
-          </div>
-          <div class="contact-item">
-            <div class="k">Email</div>
-            <div class="v"><a href="mailto:contact@keonix.co.kr">contact@keonix.co.kr</a></div>
-          </div>
-          <div class="contact-item">
-            <div class="k">Tel</div>
-            <div class="v"><a href="tel:+82423503253">+82-42-350-3253</a></div>
-          </div>
-        </div>
-
-        <div class="cta-box">
-          <h3>We welcome inquiries from investors, military &amp; government partners, and media.</h3>
-          <p>Whether it's an IR deck request, a collaboration proposal, or a visit to the Pocheon Drone Hub — email us and we'll get back to you promptly.</p>
-          <a href="mailto:contact@keonix.co.kr" class="btn btn-primary" style="align-self:flex-start;">Send an email →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <img src="../assets/keonix-logo-nav.png" alt="KEONIX Labs" class="footer-logo-img">
-      <div class="footer-text">
-        <p>© 2026 KEONIX Labs. CEO Yongjin Yoon · Business Reg. No. 687-86-03619</p>
-        <p>15 Gyeryong-ro 105beon-gil, Yuseong-gu, Daejeon · contact@keonix.co.kr · +82-42-350-3253</p>
-      </div>
-    </div>
-  </footer>
-
+  </div>
+</section>
 </main>
 
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <img src="../assets/keonix-logo-nav.png" alt="KEONIX Labs" width="73" height="22">
+      <p>© 2026 KEONIX Labs. CEO Yongjin Yoon · Business Reg. No. 687-86-03619<br>15 Gyeryong-ro 105beon-gil, Yuseong-gu, Daejeon · contact@keonix.co.kr · +82-42-350-3253</p>
+    </div>
+    <div class="foot-mark" aria-hidden="true">KEONIX</div>
+  </div>
+</footer>
+
 <script>
-  // mobile nav toggle
-  const burger = document.getElementById('burger');
-  const navLinks = document.getElementById('navLinks');
-  burger.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    burger.setAttribute('aria-expanded', 'false');
-  }));
+(function(){
+  var root = document.documentElement;
+  root.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ssGet(k){ try { return sessionStorage.getItem(k); } catch(e){ return null; } }
+  function ssSet(k,v){ try { sessionStorage.setItem(k,v); } catch(e){} }
 
-  // scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add('show'));
+  /* ---- boot loader (first visit per session) ---- */
+  var boot = document.getElementById('boot'), num = document.getElementById('bootNum'),
+      bar = document.getElementById('bootBar'), log = document.getElementById('bootLog');
+  var logs = ['INITIALIZING SYSTEM','LOADING FOUNDRY MODULES','CALIBRATING BUILD PLATE','LINKING FIELD UNITS','READY'];
+  if (reduce || ssGet('kx-booted')) { boot.style.display = 'none'; requestAnimationFrame(function(){ root.classList.add('ready'); }); }
+  else {
+    ssSet('kx-booted', '1');
+    var t0 = performance.now(), dur = 1500;
+    (function step(t){
+      var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      num.textContent = String(Math.round(e * 100)).padStart(3, '0');
+      bar.style.transform = 'scaleX(' + e + ')';
+      log.textContent = logs[Math.min(logs.length - 1, Math.floor(e * logs.length))];
+      if (p < 1) requestAnimationFrame(step);
+      else setTimeout(function(){ boot.classList.add('done'); root.classList.add('ready'); }, 180);
+    })(t0);
   }
-</script>
 
+  /* ---- nav ---- */
+  var nav = document.getElementById('nav'), menuBtn = document.getElementById('menuBtn');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
+  onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
+  function setMenu(open){
+    nav.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  menuBtn.addEventListener('click', function(){ setMenu(!nav.classList.contains('open')); });
+  document.querySelectorAll('#navLinks a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+
+  /* ---- KST clock ---- */
+  var clock = document.getElementById('clock');
+  function tickClock(){ clock.textContent = 'KST ' + new Date(Date.now() + 9 * 3600e3).toISOString().slice(11, 19); }
+  tickClock(); setInterval(tickClock, 1000);
+
+  /* ---- reveal (pre-hide only what starts below the fold) ---- */
+  var vh = window.innerHeight, rvs = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.remove('pre'); en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin:'0px 0px -8% 0px' });
+    rvs.forEach(function(el){
+      if (el.getBoundingClientRect().top > vh) {
+        el.classList.add('pre');
+        var i = Array.prototype.indexOf.call(el.parentElement.children, el);
+        el.style.transitionDelay = (Math.min(i, 5) * 70) + 'ms';
+        io.observe(el);
+      } else el.classList.add('in');
+    });
+  } else rvs.forEach(function(el){ el.classList.add('in'); });
+
+  /* ---- statement: words light up with scroll ---- */
+  var st = document.getElementById('statement');
+  (function split(node){
+    Array.prototype.slice.call(node.childNodes).forEach(function(n){
+      if (n.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(w){
+          if (!w) return;
+          if (/^\s+$/.test(w)) frag.appendChild(document.createTextNode(w));
+          else { var s = document.createElement('span'); s.className = 'w'; s.textContent = w; frag.appendChild(s); }
+        });
+        node.replaceChild(frag, n);
+      } else if (n.nodeType === 1) n.classList.add('w');
+    });
+  })(st);
+  var words = st.querySelectorAll('.w');
+  function paintWords(){
+    var r = st.getBoundingClientRect();
+    var p = reduce ? 1 : Math.max(0, Math.min(1, (vh * .85 - r.top) / (r.height + vh * .3)));
+    var n = Math.round(p * words.length);
+    for (var i = 0; i < words.length; i++) words[i].classList.toggle('on', i < n);
+  }
+  paintWords();
+
+  /* ---- deploy parallax ---- */
+  var dImg = document.getElementById('deployImg');
+  function parallax(){
+    if (reduce) return;
+    var r = dImg.parentElement.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > vh) return;
+    dImg.style.transform = 'translateY(' + ((r.top + r.height / 2 - vh / 2) / vh * -8) + '%)';
+  }
+  window.addEventListener('scroll', function(){ paintWords(); parallax(); }, { passive:true });
+  window.addEventListener('resize', function(){ vh = window.innerHeight; paintWords(); });
+
+  /* ---- hotspots: tap toggles on touch ---- */
+  var hots = document.querySelectorAll('.hot');
+  hots.forEach(function(h){
+    h.addEventListener('click', function(){ hots.forEach(function(o){ if (o !== h) o.classList.remove('show'); }); h.classList.toggle('show'); });
+  });
+
+  /* ---- additive print simulation (top-down toolpath of a 5" X-frame) ---- */
+  var cv = document.getElementById('printCanvas'), ctx = cv.getContext('2d');
+  var elLayer = document.getElementById('pLayer'), elPct = document.getElementById('pPct');
+  var css = getComputedStyle(root), tok = function(n){ return css.getPropertyValue(n).trim(); };
+  var C = { line: tok('--line'), line2: tok('--line-2'), accent: tok('--accent'), accent2: tok('--accent-2') };
+  var W = 0, H = 0, S = 1, dpr = 1, shape, shapePx, lines = [], li = 0, lp = 0, layer = 1, angle = 45, visible = false, pausing = false;
+
+  function frame(){
+    var p = new Path2D(), arm = 92, aw = 9, mr = 15;
+    p.rect(-26, -40, 52, 80);
+    [45, 135, 225, 315].forEach(function(deg){
+      var a = deg * Math.PI / 180, ca = Math.cos(a), sa = Math.sin(a), nx = -sa * aw, ny = ca * aw;
+      p.moveTo(nx, ny); p.lineTo(ca * arm + nx, sa * arm + ny); p.lineTo(ca * arm - nx, sa * arm - ny); p.lineTo(-nx, -ny); p.closePath();
+      p.moveTo(ca * arm + mr, sa * arm); p.arc(ca * arm, sa * arm, mr, 0, Math.PI * 2); p.closePath();
+    });
+    return p;
+  }
+  function buildLines(){
+    lines = []; var step = 4.2, ext = 130, a = angle * Math.PI / 180, ca = Math.cos(a), sa = Math.sin(a), k = 0;
+    for (var d = -ext; d <= ext; d += step, k++) {
+      var x1 = k % 2 ? ext : -ext, x2 = -x1;
+      lines.push([x1 * ca - d * sa, x1 * sa + d * ca, x2 * ca - d * sa, x2 * sa + d * ca]);
+    }
+    li = 0; lp = 0;
+  }
+  function inModel(fn){ ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(S, S); fn(); ctx.restore(); }
+  function drawBase(){
+    ctx.clearRect(0, 0, W, H);
+    ctx.strokeStyle = C.line; ctx.lineWidth = 1;
+    var g = 20 * S;
+    for (var x = (W / 2) % g; x < W; x += g) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+    for (var y = (H / 2) % g; y < H; y += g) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    inModel(function(){
+      ctx.fillStyle = 'rgba(47,123,255,' + Math.min(.2, .03 + layer * .004) + ')'; ctx.fill(shape);
+      ctx.lineWidth = 1 / S; ctx.strokeStyle = C.line2; ctx.stroke(shape);
+    });
+  }
+  function drawSeg(l, from, to){
+    inModel(function(){
+      ctx.clip(shape);
+      ctx.strokeStyle = 'rgba(143,182,255,.6)'; ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(l[0] + (l[2] - l[0]) * from, l[1] + (l[3] - l[1]) * from);
+      ctx.lineTo(l[0] + (l[2] - l[0]) * to, l[1] + (l[3] - l[1]) * to);
+      ctx.stroke();
+    });
+  }
+  function size(){
+    var r = cv.getBoundingClientRect();
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = r.width; H = r.height; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    S = Math.min(W, H) / 250;
+    shape = frame();
+    shapePx = new Path2D(); shapePx.addPath(shape, new DOMMatrix().translate(W / 2, H / 2).scale(S));
+    buildLines(); drawBase();
+    if (reduce) lines.forEach(function(l){ drawSeg(l, 0, 1); });
+  }
+  function loop(){
+    if (visible && !pausing) {
+      for (var n = 0; n < 3 && li < lines.length; n++) {
+        var to = Math.min(1, lp + .11);
+        drawSeg(lines[li], lp, to); lp = to;
+        if (lp >= 1) { li++; lp = 0; }
+      }
+      if (li < lines.length) {
+        var c = lines[li], x = W / 2 + (c[0] + (c[2] - c[0]) * lp) * S, y = H / 2 + (c[1] + (c[3] - c[1]) * lp) * S;
+        if (ctx.isPointInPath(shapePx, x * dpr, y * dpr)) {
+          ctx.fillStyle = C.accent2; ctx.beginPath(); ctx.arc(x, y, 1.8, 0, Math.PI * 2); ctx.fill();
+        }
+      } else {
+        pausing = true;
+        inModel(function(){ ctx.lineWidth = 2 / S; ctx.strokeStyle = C.accent; ctx.stroke(shape); });
+        setTimeout(function(){
+          layer = layer >= 120 ? 1 : layer + 1; angle = -angle;
+          buildLines(); drawBase(); pausing = false;
+        }, 420);
+      }
+      elLayer.textContent = String(layer).padStart(3, '0');
+      elPct.textContent = Math.min(100, Math.round(((layer - 1) + li / lines.length) / 120 * 100)) + '%';
+    }
+    requestAnimationFrame(loop);
+  }
+  size();
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(size, 150); });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(e){ visible = e[0].isIntersecting && !reduce; }, { threshold:.1 }).observe(cv);
+  else visible = !reduce;
+  requestAnimationFrame(loop);
+
+  /* ---- foundry terminal ---- */
+  var term = document.getElementById('term');
+  var tl = [
+    ['ac','> mission.load("FPV / TRAINING")'],
+    ['','  requirements → frame class 5" · modular arms'],
+    ['ac','> ai.design.generate(variants=24)'],
+    ['','  topology optimized · best candidate #07'],
+    ['ac','> slicer.run(frame_x5, layer=0.2mm)'],
+    ['ok','  ✓ toolpath ready · 120 layers'],
+    ['ac','> foundry.queue(unit="22G2-A")'],
+    ['ok','  ✓ build started'],
+    ['ac','> qa.inspect(tolerance=±5%)'],
+    ['ok','  ✓ pass · dispatch to assembly cell']
+  ];
+  var ti = 0, buf = [];
+  function termTick(){
+    var t = tl[ti++ % tl.length], d = document.createElement('div');
+    d.className = t[0]; d.textContent = t[1]; buf.push(d);
+    if (buf.length > 5) buf.shift();
+    term.replaceChildren.apply(term, buf);
+  }
+  for (var q = 0; q < 5; q++) termTick();
+  if (!reduce) setInterval(termTick, 1400);
+
+  /* ---- gaecheon ring ---- */
+  var steps = [
+    ['DESIGN','Design','Define mission requirements from a central database'],
+    ['MANUFACTURE','Manufacture','Rapid prototyping and production across distributed facilities'],
+    ['TEST & VALIDATE','Test & Validate','Realistic scenario testing at the Pocheon hub'],
+    ['DEPLOY','Deploy','Field validated systems to operational units'],
+    ['TRAIN','Train','Soldiers master system operation in AR/VR environments'],
+    ['FEEDBACK','Feedback · Redesign','Collect operational data and improve designs immediately']
+  ];
+  var g = document.getElementById('ringNodes'), list = document.getElementById('stepList'), ns = 'http://www.w3.org/2000/svg';
+  var nodes = [], tabs = [], cur = 0, timer = null, R = 160, circ = 2 * Math.PI * R, arc = document.getElementById('ringArc');
+  steps.forEach(function(s, i){
+    var a = (-90 + i * 60) * Math.PI / 180, ca = Math.cos(a), sa = Math.sin(a);
+    var grp = document.createElementNS(ns, 'g');
+    grp.setAttribute('class', 'node'); grp.setAttribute('tabindex', '0'); grp.setAttribute('role', 'button');
+    grp.setAttribute('aria-label', 'Stage ' + (i + 1) + ': ' + s[1]);
+    var c = document.createElementNS(ns, 'circle');
+    c.setAttribute('cx', 220 + R * ca); c.setAttribute('cy', 220 + R * sa); c.setAttribute('r', 9);
+    var tx = document.createElementNS(ns, 'text');
+    tx.setAttribute('x', 220 + (R + 24) * ca); tx.setAttribute('y', 220 + (R + 24) * sa + 4);
+    tx.setAttribute('text-anchor', Math.abs(ca) < .2 ? 'middle' : (ca > 0 ? 'start' : 'end'));
+    tx.textContent = String(i + 1).padStart(2, '0') + ' ' + s[0];
+    grp.appendChild(c); grp.appendChild(tx); g.appendChild(grp); nodes.push(grp);
+    grp.addEventListener('click', function(){ go(i, true); });
+    grp.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(i, true); } });
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', 'Stage ' + (i + 1) + ': ' + s[1]);
+    b.addEventListener('click', function(){ go(i, true); });
+    list.appendChild(b); tabs.push(b);
+  });
+  function go(i, user){
+    cur = i; var s = steps[i], n = String(i + 1).padStart(2, '0');
+    nodes.forEach(function(nd, k){ nd.classList.toggle('on', k === i); });
+    tabs.forEach(function(t, k){ t.classList.remove('on'); t.classList.toggle('done', k < i || (reduce && k === i)); t.setAttribute('aria-current', k === i ? 'step' : 'false'); });
+    if (!reduce) { void tabs[i].offsetWidth; tabs[i].classList.add('on'); }
+    arc.setAttribute('stroke-dasharray', (circ * (i + 1) / 6) + ' ' + circ);
+    document.getElementById('ringNum').textContent = n;
+    document.getElementById('ringEn').textContent = s[0];
+    document.getElementById('stepTag').textContent = n + ' / ' + s[0];
+    document.getElementById('stepTitle').textContent = s[1];
+    document.getElementById('stepDesc').textContent = s[2];
+    clearTimeout(timer);
+    if (!reduce) timer = setTimeout(function(){ go((cur + 1) % 6); }, user ? 8000 : 4000);
+  }
+  go(0);
+})();
+</script>
 </body>
 </html>
