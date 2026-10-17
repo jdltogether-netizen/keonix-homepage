@@ -52,6 +52,7 @@
     -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
   img{ max-width:100%; display:block; }
+  [hidden]{ display:none !important; }
   a{ color:inherit; text-decoration:none; }
   ::selection{ background:var(--accent); color:var(--on-accent); }
   :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
@@ -321,7 +322,7 @@
   .advisors span:last-child{ flex:1 1 320px; }
   .staff{ margin-top:clamp(72px,9vw,120px); }
   .staff .sec-head{ margin-bottom:40px; }
-  .staff-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .staff-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); }
   .person{ background:var(--bg-2); padding:24px; display:grid; grid-template-columns:72px minmax(0,1fr); gap:18px; align-items:start; }
   .person img{ width:72px; height:72px; object-fit:cover; filter:grayscale(1); }
   .person .mono{ color:var(--accent-2); font-size:10.5px; }
@@ -711,11 +712,18 @@
         <p class="deg">Ph.D. Stanford Univ. Mechanical Engineering / Financial Engineering (Minor)</p>
         <ul><li>Leads strategy &amp; fundraising</li><li>Defense procurement &amp; policy</li></ul>
       </article>
-      <article class="member rv">
+      <!-- Haejin Choi (CTO): 현재 비공개. 다시 노출하려면 hidden 속성만 지우면 됩니다. -->
+      <article class="member rv" hidden>
         <div class="photo"><img src="../assets/team-choi-haejin.png" alt="Haejin Choi" loading="lazy"><span class="role">CTO</span></div>
         <h3>Haejin Choi</h3>
         <p class="deg">Ph.D., Georgia Institute of Technology</p>
         <ul><li>Leading Korean authority on 3D-printing-based additive manufacturing</li><li>President, Smart Additive Manufacturing Division, Korean Society of Mechanical Engineers</li></ul>
+      </article>
+      <article class="member rv">
+        <div class="photo"><img src="../assets/team-kim-samyeon.png" alt="Samyeon Kim" loading="lazy"><span class="role">CTO</span></div>
+        <h3>Samyeon Kim</h3>
+        <p class="deg">Professor of Mechanical Engineering, Jeonju University</p>
+        <ul><li>Member, ASTM F42.04 · Singapore AM Technical Committee</li><li>LGE modular design advisor; formerly NTU · NIST/SUTD</li></ul>
       </article>
       <article class="member rv">
         <div class="photo"><img src="../assets/team-park-sangin.png" alt="Sangin Park" loading="lazy"><span class="role">R&amp;D Director · 3DP MFG</span></div>
@@ -745,11 +753,6 @@
         <p class="lede">From additive manufacturing standards to smart factories and defense program management, hands-on experts in each field power KEONIX's execution.</p>
       </div>
       <div class="staff-grid rv">
-        <div class="person">
-          <img src="../assets/team-kim-samyeon.png" alt="Samyeon Kim" loading="lazy">
-          <div><span class="mono">Industrial Engineering Advisor</span><h4>Prof. Samyeon Kim</h4>
-            <ul><li>Professor, Dept. of Mechanical Engineering, Jeonju University</li><li>Member, Singapore Additive Manufacturing Technical Committee / ASTM F42.04 Design Subcommittee</li><li>Modular Design Advisor, LGE; formerly researcher at NTU 3D Printing Center · NIST/SUTD</li></ul></div>
-        </div>
         <div class="person">
           <img src="../assets/team-won-younggyu.png" alt="Younggyu Won" loading="lazy">
           <div><span class="mono">Tech Advisor</span><h4>Younggyu Won</h4>
