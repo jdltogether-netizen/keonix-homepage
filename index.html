@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>KEONIX Labs</title>
-<meta name="description" content="KEONIX Labs — 적층제조 기반 저비용 드론 고속 대량 생산과 전주기 운용·훈련 체계를 구축합니다." />
+<meta name="description" content="KEONIX Labs — 군이 드론을 대량으로 획득·운용하는 데 필요한 역량을 현장에서 함께 만듭니다. 현장 요구를 모듈로 신속히 구성·검증하고, 필요하면 생산 거점을 늘려 대량 생산까지 이어 갑니다." />
 <meta property="og:title" content="KEONIX Labs — Korea's Operational Nexus of Intelligent eXecution" />
-<meta property="og:description" content="저비용 드론을, 국가급 속도로 생산하고 배치합니다." />
+<meta property="og:description" content="부대 곁에서 채우고, 바꾸고, 고치는 드론 전력 기반 — 필요하면 거점을 늘려 대량으로." />
 <meta property="og:image" content="https://keonix.co.kr/assets/product-drone-fleet.png" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230b0d0a%22/><path d=%22M30 22h14v22l20-22h17L58 47l24 31H64L47 55l-3 3v20H30z%22 fill=%22%232f7bff%22/></svg>">
 <link rel="alternate" hreflang="ko" href="https://keonix.co.kr/" />
@@ -64,6 +64,7 @@
   .eyebrow::before{ content:""; width:18px; height:1px; background:var(--accent); flex:none; }
   .display{ font-family:var(--f-display); font-weight:700; text-transform:uppercase; line-height:.9; letter-spacing:-.005em; }
   h2.title{ font-size:clamp(28px, 3.6vw, 48px); font-weight:700; line-height:1.2; letter-spacing:-.025em; text-wrap:balance; }
+  .subtitle{ margin-top:12px; font-family:var(--f-mono); font-size:13px; letter-spacing:.08em; color:var(--accent-2); }
   .lede{ color:var(--muted); font-size:clamp(16px,1.25vw,18px); max-width:62ch; }
 
   /* ---------- boot loader ---------- */
@@ -233,6 +234,9 @@
   .unit-grid{ position:absolute; inset:-10% -20%; z-index:-1; background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:48px 48px; mask-image:radial-gradient(ellipse at center, #000 20%, transparent 70%); -webkit-mask-image:radial-gradient(ellipse at center, #000 20%, transparent 70%); opacity:.6; }
   .unit{ position:relative; }
   .concept{ position:absolute; left:0; top:0; z-index:1; font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; color:var(--muted); border:1px solid var(--line-2); padding:5px 9px; background:var(--glass); }
+  .imgnote{ position:absolute; z-index:2; right:var(--gut); font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; color:var(--fg); opacity:.8; border:1px solid var(--line-2); padding:5px 9px; background:var(--glass); pointer-events:none; }
+  .hero .imgnote{ top:calc(132px + env(safe-area-inset-top,0px)); }
+  .deploy .imgnote{ top:24px; }
   .unit-img{ width:100%; height:auto; filter:drop-shadow(0 40px 60px rgba(0,0,0,.6)); }
   .hot{ position:absolute; transform:translate(-50%,-50%); width:28px; height:28px; border-radius:50%; display:grid; place-items:center; }
   .hot::before{ content:""; width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-bg); }
@@ -446,16 +450,17 @@
 <main>
 <!-- ============ HERO ============ -->
 <section class="hero" id="home">
-  <div class="hero-media"><img src="assets/product-drone-fleet.png" alt="이동형 생산 유닛 앞에 배치된 FPV 드론 편대" fetchpriority="high"></div>
+  <div class="hero-media"><img src="assets/product-drone-fleet.png" alt="이동형 생산 유닛 앞에 배치된 FPV 드론 편대 (개념 이미지)" fetchpriority="high"></div>
+  <span class="imgnote">개념 이미지</span>
   <div class="scan"></div>
   <div class="hud" aria-hidden="true">
     <div>
-      <span class="live">UNIT 22G2 · ONLINE</span>
+      <span class="live">UNIT 22G2 · CONCEPT</span>
       <span>36.3624°N 127.3561°E · DAEJEON</span>
     </div>
     <div class="r">
       <span id="clock">KST --:--:--</span>
-      <span>FOUNDRY STATUS · DEPLOYABLE</span>
+      <span>FOUNDRY STATUS · IN DESIGN</span>
     </div>
   </div>
   <div class="reticle" aria-hidden="true"><i></i><i></i><i></i><i></i><span>TGT · FPV FRAME / ADDITIVE</span></div>
@@ -470,7 +475,7 @@
     <div class="hero-foot">
       <div>
         <p class="hero-ko">현장의 요구를 <b>군의 역량</b>으로.</p>
-        <p class="hero-sub">KEONIX Labs는 한국군이 드론을 직접 만들고 고치고 바꿀 수 있도록, 그 역량을 구축하고 끊기지 않게 지키는 KAIST 교원창업 기업입니다.</p>
+        <p class="hero-sub">KEONIX Labs는 군이 드론을 대량으로 획득·운용하는 과정에 필요한 역량, 곧 부대 곁에서 계속 채우고·바꾸고·고치는 현장 기반을 함께 구축하는 KAIST 교원창업 기업입니다. 필요하면 생산 거점을 늘려 대량 생산까지 뒷받침합니다.</p>
       </div>
       <div class="hero-cta">
         <a href="#solution" class="btn solid">솔루션 살펴보기 <span class="arr">→</span></a>
@@ -483,18 +488,18 @@
 <!-- ============ TICKER ============ -->
 <div class="ticker" aria-label="핵심 지표">
   <div class="ticker-track">
-    <div class="tk"><b>US$15.8B</b><span>글로벌 군용 드론 시장 (TAM, 2025)</span></div>
+    <div class="tk"><b>6만 대</b><span>교육용 드론 단계 보급 계획 (~2029)</span></div>
     <div class="tk"><b>70%+</b><span>PoC 목표 생산 자동화율</span></div>
     <div class="tk"><b>±5%</b><span>목표 반복 생산 오차 범위</span></div>
-    <div class="tk"><b>2027</b><span>훈련용 FPV 드론 적용 실증</span></div>
-    <div class="tk"><b>KAIST × CAU</b><span>공동 설계 연구진</span></div>
-    <div class="tk"><b>POCHEON</b><span>국가 드론 실증 허브 파트너</span></div>
-    <div class="tk" aria-hidden="true"><b>US$15.8B</b><span>글로벌 군용 드론 시장 (TAM, 2025)</span></div>
+    <div class="tk"><b>2026.12</b><span>포천 실증 착수 (교육용 드론부터)</span></div>
+    <div class="tk"><b>KAIST·중앙대·전남대·인천대</b><span>공동 연구진</span></div>
+    <div class="tk"><b>POCHEON</b><span>드론 실증 거점 파트너</span></div>
+    <div class="tk" aria-hidden="true"><b>6만 대</b><span>교육용 드론 단계 보급 계획 (~2029)</span></div>
     <div class="tk" aria-hidden="true"><b>70%+</b><span>PoC 목표 생산 자동화율</span></div>
     <div class="tk" aria-hidden="true"><b>±5%</b><span>목표 반복 생산 오차 범위</span></div>
-    <div class="tk" aria-hidden="true"><b>2027</b><span>훈련용 FPV 드론 적용 실증</span></div>
-    <div class="tk" aria-hidden="true"><b>KAIST × CAU</b><span>공동 설계 연구진</span></div>
-    <div class="tk" aria-hidden="true"><b>POCHEON</b><span>국가 드론 실증 허브 파트너</span></div>
+    <div class="tk" aria-hidden="true"><b>2026.12</b><span>포천 실증 착수 (교육용 드론부터)</span></div>
+    <div class="tk" aria-hidden="true"><b>KAIST·중앙대·전남대·인천대</b><span>공동 연구진</span></div>
+    <div class="tk" aria-hidden="true"><b>POCHEON</b><span>드론 실증 거점 파트너</span></div>
   </div>
 </div>
 
@@ -502,13 +507,13 @@
 <section class="sec" id="mission">
   <div class="wrap">
     <p class="eyebrow">Mission &amp; Vision</p>
-    <p class="statement" id="statement">드론은 아껴 쓰는 장비가 아니라 <span class="hl">쓰고 잃고 다시 채우는 소모품</span>입니다. 기체를 보급한 뒤에도 제작·정비·교육이 끊기지 않아야 드론 전력이 유지됩니다.</p>
+    <p class="statement" id="statement">드론은 <span class="hl">기체째, 또는 부품·모듈 단위로 소모되는 장비</span>입니다. 소모성·가변성·현장성 때문에, 대량 획득과 함께 재보급·구성 변경·현장 정비가 갖춰져야 드론 전력이 유지됩니다.</p>
 
     <div class="mission-grid rv">
       <div>
         <span class="mono">Vision</span>
         <h3>군이 주체가 되는 드론 역량</h3>
-        <p>군이 필요한 드론을 스스로 만들고 고치고 바꿀 수 있는 역량을 갖추고, 인력과 위협이 바뀌어도 그 역량을 계속 유지·관리할 수 있도록 돕습니다.</p>
+        <p>군이 드론을 대량으로 들여오는 만큼, 부대 곁에서 계속 채우고·바꾸고·고칠 수 있는 역량을 갖추도록 돕고, 인력과 위협이 바뀌어도 그 역량이 유지·고도화되도록 함께합니다.</p>
       </div>
       <div>
         <span class="mono">Why now</span>
@@ -518,10 +523,10 @@
     </div>
 
     <div class="stages">
-      <div class="stage rv"><div class="num">01</div><h4>구현</h4><p>현장 요구를 KEONIX Labs가 먼저 설계·제작·시험해 효과를 확인합니다.</p></div>
-      <div class="stage rv"><div class="num">02</div><h4>전수</h4><p>실습 교육과 교관 양성으로 제작·정비 방법을 군에 전달합니다.</p></div>
-      <div class="stage rv"><div class="num">03</div><h4>자립</h4><p>승인된 범위의 제작·시험·정비를 부대가 직접 수행합니다.</p></div>
-      <div class="stage rv"><div class="num">04</div><h4>유지·고도화</h4><p>교관 재인증, 자료 갱신, 자동화와 신규 기체 개발로 역량을 이어갑니다.</p></div>
+      <div class="stage rv"><div class="num">01</div><h4>구현</h4><p>현장 소요를 KEONIX Labs가 모듈로 신속히 구성·시험해 효과를 확인합니다.</p></div>
+      <div class="stage rv"><div class="num">02</div><h4>체계화</h4><p>검증된 조합을 라이브러리(조합 레시피·출력 파일·시험 데이터·정비 절차)로 쌓습니다.</p></div>
+      <div class="stage rv"><div class="num">03</div><h4>이식</h4><p>기술 묶음 패키지와 실습 교육·교관 양성으로 군에 이식합니다. 부대 여건에 따라 현장형(부대가 직접 제작·정비) 또는 거점형(기본 정비는 부대, 수리는 거점)으로.</p></div>
+      <div class="stage rv"><div class="num">04</div><h4>유지·고도화</h4><p>교관 재인증, 자료 갱신, 자동화와 신규 기체 개발로 역량을 이어 가고, 필요하면 생산 거점을 늘려 대량 생산으로 확장합니다.</p></div>
     </div>
   </div>
 </section>
@@ -534,7 +539,7 @@
         <p class="eyebrow">Solution</p>
         <h2 class="title">쉽게 고치고 계속 쓰는<br>드론 운용 솔루션</h2>
       </div>
-      <p class="lede">적층제조와 모듈형 설계로 부대가 드론을 쉽게 만들고 고치고 바꿀 수 있게 돕습니다. 파손이 훈련 중단으로 이어지지 않도록 제작·정비·교육·부품 공급을 하나로 묶어 지원합니다.</p>
+      <p class="lede">유연생산(3D 프린팅·맞춤형 CNC·레이저 커팅)과 모듈형 설계로 부대가 드론을 쉽게 만들고 고치고 바꿀 수 있게 돕습니다. 파손이 훈련 중단으로 이어지지 않도록 제작·정비·교육·부품 공급을 하나로 묶어 지원합니다.</p>
     </div>
 
     <div class="foundry">
@@ -553,16 +558,16 @@
         <article class="axis rv">
           <span class="corner"></span>
           <span class="mono">Core 01</span>
-          <h3>모듈형 소모성 드론</h3>
-          <div class="en">Modular Expendable Drone</div>
-          <p>프레임은 바꾸고 전장품은 살립니다. 손상된 메인 프레임만 다시 출력해 교체하고, 주요 전장품은 일체형 슬라이드에 묶어 새 프레임으로 한 번에 옮깁니다. 스냅핏 구조라 공구 없이 조립합니다.</p>
+          <h3>모듈형 드론 프레임</h3>
+          <div class="en">Modular Drone Frame</div>
+          <p>프레임은 바꾸고 전장품은 살립니다. 기존 기체의 카본 프레임을 3D 프린팅 모듈러 프레임으로 바꾸고 전장을 그대로 옮겨 싣는 시제기를 만들어 검증하고 있습니다(1.43kg · 프레임 출력 7시간 25분). 손상된 부위만 다시 출력해 교체합니다.</p>
         </article>
         <article class="axis rv">
           <span class="corner"></span>
           <span class="mono">Core 02</span>
-          <h3>부품 통합 관리 시스템</h3>
-          <div class="en">Integrated Parts Management</div>
-          <p>부품 정보와 출력 조건을 한 화면에서 연결해, 부품 선택부터 출력 파일 생성까지 한 흐름으로 처리합니다. 인력이 바뀌어도 같은 부품을 같은 조건으로 다시 만들 수 있습니다.</p>
+          <h3>기술 라이브러리</h3>
+          <div class="en">Technology Library</div>
+          <p>검증된 조합의 레시피·출력 파일·시험 데이터·정비 절차를 한곳에 쌓습니다. 공통 요소는 변형 가능한 레시피로 저장해 검증된 조합 범위 안에서 골라 쓰게 하고, 인력이 바뀌어도 같은 부품을 같은 조건으로 다시 만들 수 있습니다.</p>
         </article>
       </div>
     </div>
@@ -571,9 +576,9 @@
       <div class="cap rv"><span class="idx">/01</span><h4>제작·시험·정비 기반 구축</h4><p>부대 업무 범위를 진단하고 3D 프린터·정비 벤치·시험장비와 표준 작업절차를 갖춥니다.</p></div>
       <div class="cap rv"><span class="idx">/02</span><h4>교육과정 운영</h4><p>조종·기본 정비·출력 부품 제작 실습과 교관 양성으로 숙련을 조직에 남깁니다.</p></div>
       <div class="cap rv"><span class="idx">/03</span><h4>맞춤 프레임 개발</h4><p>현장 요구를 분석해 모듈형 프레임을 설계·출력하고 비행시험까지 마칩니다.</p></div>
-      <div class="cap rv"><span class="idx">/04</span><h4>국내 부품 공급</h4><p>전장·프레임·소모품을 국내 공급망으로 부분 부품 또는 완제품 형태로 공급합니다.</p></div>
+      <div class="cap rv"><span class="idx">/04</span><h4>국산 부품·검증 조합 공급</h4><p>검증된 조합을 거점에서 출력·조립해 부품·모듈 또는 완성 기체로 공급하고, 국산화가 필요한 부품은 민·관·군·학 과제로 제안해 부품 기업과 함께 개발합니다.</p></div>
       <div class="cap rv"><span class="idx">/05</span><h4>수리·기술 지원</h4><p>대체 부품 검토, 모터 규격 어댑터, 고장 이력 관리로 정비 부담을 줄입니다.</p></div>
-      <div class="cap rv"><span class="idx">/06</span><h4>자동화·이동형 생산</h4><p>검증된 공정을 로봇팔 기반으로 자동화하고, 필요하면 이동형 생산 유닛으로 확장합니다.</p></div>
+      <div class="cap rv"><span class="idx">/06</span><h4>자동화·이동형 생산</h4><p>검증된 공정을 로봇팔 기반으로 자동화하고, 필요하면 이동형 생산 유닛으로 확장합니다. 생산 거점을 늘려 대량 생산으로도 확장합니다.</p></div>
     </div>
   </div>
 </section>
@@ -611,12 +616,13 @@
 </section>
 
 <section class="deploy" aria-label="실제 야전 배치">
-  <img src="assets/product-field-deployed.png" alt="해 질 녘 활주로에 전개된 이동형 생산 유닛" loading="lazy" id="deployImg">
+  <img src="assets/product-field-deployed.png" alt="해 질 녘 활주로에 전개된 이동형 생산 유닛 (개념 이미지)" loading="lazy" id="deployImg">
+  <span class="imgnote">개념 이미지</span>
   <div class="wrap deploy-body">
     <p class="eyebrow">Field Deployment</p>
     <h2 class="display">Deploy<br>anywhere<span>.</span></h2>
     <div class="deploy-row">
-      <p>필요한 곳이라면 전방 거점까지 생산 유닛을 전개합니다.</p>
+      <p>필요한 곳이라면 전방 거점까지 생산 유닛을 전개합니다.<br>표준 부품·모듈은 후방에서 대량으로, 프레임·어댑터·임무 모듈은 거점·현장에서 유연하게 만듭니다.</p>
       <div class="deploy-tags"><span class="tag">FORWARD BASE</span><span class="tag">AIRFIELD</span><span class="tag">TRAINING SITE</span></div>
     </div>
   </div>
@@ -629,8 +635,9 @@
       <div>
         <p class="eyebrow">Project Gaecheon · 開天</p>
         <h2 class="title">프로젝트 개천(開天)<br>드론 역량 순환 체계</h2>
+        <p class="subtitle">포천 실증 사업</p>
       </div>
-      <p class="lede">‘프로젝트 개천’은 KEONIX Labs가 구상하는 드론 역량 체계를 포천시에서 실제로 구현하는 프로젝트입니다. 교육, 맞춤형 제작, 제작·정비 설비를 함께 연구개발하고, 포천 지역 주둔 부대와 협업하며, 포천에서 창설된 드론작전사령부(국방드론본부로 개편 추진)와의 연계를 통해 설계부터 훈련·피드백까지 한곳에서 이어지는 통합 거점을 구축합니다.</p>
+      <p class="lede">‘프로젝트 개천’은 KEONIX Labs가 구상하는 드론 역량 체계를 포천시에서 실제로 구현하는 프로젝트입니다. 교육, 맞춤형 제작, 제작·정비 설비를 함께 연구개발하고, 포천 지역 주둔 부대와 협업하고, 국방드론본부(2026.11 출범) 등 군 드론 조직과의 연계를 모색하며 설계부터 훈련·피드백까지 한곳에서 이어지는 통합 거점을 구축합니다.</p>
     </div>
 
     <div class="cycle">
@@ -644,16 +651,16 @@
         <div class="ring-core">
           <div>
             <div class="display" id="ringNum">01</div>
-            <div class="mono" id="ringEn">DESIGN</div>
+            <div class="mono" id="ringEn">FIELD NEEDS</div>
           </div>
         </div>
       </div>
 
       <div>
         <div class="stepcard" aria-live="polite">
-          <span class="mono" id="stepTag">01 / DESIGN</span>
-          <h3 id="stepTitle">설계</h3>
-          <p id="stepDesc">중앙 데이터베이스 기반 임무 요구사항 정의</p>
+          <span class="mono" id="stepTag">01 / FIELD NEEDS</span>
+          <h3 id="stepTitle">현장 소요 확인 (군·민)</h3>
+          <p id="stepDesc">인근 부대의 운용·정비·개조 요구를 확인</p>
         </div>
         <div class="steplist" id="stepList" aria-label="단계 선택"></div>
       </div>
@@ -663,7 +670,7 @@
       <div class="coord"><b>STRATEGIC HUB</b>37.8949°N<br>127.2003°E<br>POCHEON</div>
       <div>
         <h3>전략 허브 파트너 · 포천시</h3>
-        <p>국토부 드론 실증 도시 구축사업에 2년 연속 선정되었으며, 첨단 국산 드론 산업단지 조성을 함께 추진하는 실행 거점입니다. 적층 제조 시설, AR/VR 훈련장, 통합 테스트 영공을 갖춘 포천 국가 드론 허브가 이 순환 구조의 엔진 역할을 합니다.</p>
+        <p>국토교통부 드론특별자유화구역으로 두 차례 지정(2021·2023)되고 드론 실증도시 구축사업에도 선정된, 첨단 국산 드론 산업단지 조성을 함께 추진하는 실행 거점입니다. 적층제조 시설과 교육·훈련장(2026.12 개소 예정)을 갖추고 포천의 시험 공역과 연계될 포천 드론 실증 거점이 이 순환 구조의 엔진이 됩니다.</p>
         <div class="ref">
           <span class="mono">Reference · 2026.04.21</span>
           <h4>포천시 업무협약 · 3D 프린터 기반 드론 생산기술 개발 및 인재 양성</h4>
@@ -671,6 +678,7 @@
             <li>협력 분야: 드론 산업 기획·운영, 기술개발과 기반 구축, 국가·국방사업 공동 추진, 드론 교육사업 발굴</li>
             <li>경기대진테크노파크 내 교육장·생산 기반 구축</li>
             <li>포천 교육센터 2026년 12월 개소 예정</li>
+            <li>2026.10.30 포천시·KAIST 기술가치창출원 3자 업무협약</li>
           </ul>
         </div>
       </div>
@@ -683,7 +691,7 @@
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <p class="eyebrow">Scaling-Up Roadmap</p>
+        <p class="eyebrow">사업 로드맵 · Scaling-Up Roadmap</p>
         <h2 class="title">2035년, K-Defense 드론<br>생태계 선도 기업으로</h2>
       </div>
       <p class="lede">파일럿(훈련·평가) → 조달·센터 확장 → 스케일업 순으로 성장하며, 국내 조달을 발판으로 해외 수출 패키지를 준비합니다.</p>
@@ -692,7 +700,7 @@
     <div class="road">
       <div class="phase rv">
         <div class="bar-area"><div class="bar" style="--h:33%"><span>100억<small>VALUATION</small></span></div></div>
-        <div class="phase-info"><span class="mono">Startup</span><div class="yr">2026 – 2027</div><h4>창업팀 구성 &amp; MVP</h4><p>포천 허브 MVP · 민·군 교육 개발</p></div>
+        <div class="phase-info"><span class="mono">Startup</span><div class="yr">2026 – 2027</div><h4>창업팀 구성 &amp; MVP</h4><p>포천 거점 MVP · 민·군 교육 개발</p></div>
       </div>
       <div class="phase rv">
         <div class="bar-area"><div class="bar" style="--h:57%"><span>500억<small>VALUATION</small></span></div></div>
@@ -758,7 +766,7 @@
 
     <div class="advisors rv">
       <span class="mono">Advisors &amp; Network</span>
-      <span>군 작전·방산 조달·항공 인증·산학연 자문 그룹과 법무·재무·산업공학·기술 전문가가 팀을 뒷받침합니다.</span>
+      <span>군 작전·방산 조달·항공 인증·산학연 자문 그룹, 충남대 등 대학·연구기관 네트워크와 법무·재무·산업공학·기술 전문가가 팀을 뒷받침합니다.</span>
     </div>
 
     <div class="staff" id="staff">
@@ -823,7 +831,7 @@
       </dl>
       <div class="contact-cta">
         <p class="lead">투자자·군/지자체 파트너십·미디어 문의를 환영합니다.</p>
-        <p>사업 소개서(IR) 요청, 협업 제안, 포천 드론 허브 방문 등 무엇이든 이메일로 연락 주시면 빠르게 회신드리겠습니다.</p>
+        <p>사업 소개서(IR) 요청, 협업 제안, 포천 센터 방문 등 무엇이든 이메일로 연락 주시면 빠르게 회신드리겠습니다.</p>
         <a href="mailto:contact@keonix.co.kr" class="btn solid">이메일 보내기 <span class="arr">→</span></a>
       </div>
     </div>
@@ -1058,12 +1066,12 @@
 
   /* ---- gaecheon ring ---- */
   var steps = [
-    ['DESIGN','설계','중앙 데이터베이스 기반 임무 요구사항 정의'],
-    ['MANUFACTURE','제조','분산된 시설에서의 신속 프로토타입 및 생산'],
-    ['TEST & VALIDATE','시험 및 검증','포천 허브에서의 실전적 시나리오 테스트'],
-    ['DEPLOY','실전 배치','검증된 시스템을 현장 부대에 배치'],
-    ['TRAIN','훈련','AR/VR 환경에서 병사들의 시스템 운용 숙달'],
-    ['FEEDBACK','피드백 · 재설계','운용 데이터를 수집해 설계도를 즉시 개선']
+    ['FIELD NEEDS','현장 소요 확인 (군·민)','인근 부대의 운용·정비·개조 요구를 확인'],
+    ['CONFIGURE','설계·신속 구성 (민·학)','라이브러리 기반으로 모듈·교체 부품을 구성하고 대학·연구소와 설계 협업'],
+    ['PRODUCE','유연생산 (민)','거점에서 3D 프린팅·CNC·레이저 커팅으로 신속 시제·생산'],
+    ['TEST & VALIDATE','공역 시험·검증 (군·관·민)','포천 시험 공역에서 비행·성능 검증'],
+    ['DEPLOY','실전 배치·훈련 (군)','검증된 시스템을 현장 부대에 배치하고 교육·훈련'],
+    ['FEEDBACK','피드백·라이브러리화','운용 데이터를 라이브러리에 쌓아 설계와 조합 범위를 개선']
   ];
   var g = document.getElementById('ringNodes'), list = document.getElementById('stepList'), ns = 'http://www.w3.org/2000/svg';
   var nodes = [], tabs = [], cur = 0, timer = null, R = 160, circ = 2 * Math.PI * R, arc = document.getElementById('ringArc');

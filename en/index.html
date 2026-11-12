@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>KEONIX Labs</title>
-<meta name="description" content="KEONIX Labs builds systems for high-speed mass production of low-cost drones through additive manufacturing, and for full-lifecycle operations and training." />
+<meta name="description" content="KEONIX Labs builds, alongside the units, the capability the military needs to acquire and operate drones at scale: configuring and validating modular solutions to field requirements fast, and adding production hubs to scale up to mass production when needed." />
 <meta property="og:title" content="KEONIX Labs — Korea's Operational Nexus of Intelligent eXecution" />
-<meta property="og:description" content="Low-cost drones, built and deployed at national speed." />
+<meta property="og:description" content="Resupply, reconfigure and repair drones right beside the unit — and add hubs to scale to mass production when needed." />
 <meta property="og:image" content="https://keonix.co.kr/assets/product-drone-fleet.png" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230b0d0a%22/><path d=%22M30 22h14v22l20-22h17L58 47l24 31H64L47 55l-3 3v20H30z%22 fill=%22%232f7bff%22/></svg>">
 <link rel="alternate" hreflang="ko" href="https://keonix.co.kr/" />
@@ -64,6 +64,7 @@
   .eyebrow::before{ content:""; width:18px; height:1px; background:var(--accent); flex:none; }
   .display{ font-family:var(--f-display); font-weight:700; text-transform:uppercase; line-height:.9; letter-spacing:-.005em; }
   h2.title{ font-size:clamp(28px, 3.6vw, 48px); font-weight:700; line-height:1.2; letter-spacing:-.025em; text-wrap:balance; }
+  .subtitle{ margin-top:12px; font-family:var(--f-mono); font-size:13px; letter-spacing:.08em; color:var(--accent-2); }
   .lede{ color:var(--muted); font-size:clamp(16px,1.25vw,18px); max-width:62ch; }
 
   /* ---------- boot loader ---------- */
@@ -233,6 +234,9 @@
   .unit-grid{ position:absolute; inset:-10% -20%; z-index:-1; background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:48px 48px; mask-image:radial-gradient(ellipse at center, #000 20%, transparent 70%); -webkit-mask-image:radial-gradient(ellipse at center, #000 20%, transparent 70%); opacity:.6; }
   .unit{ position:relative; }
   .concept{ position:absolute; left:0; top:0; z-index:1; font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; color:var(--muted); border:1px solid var(--line-2); padding:5px 9px; background:var(--glass); }
+  .imgnote{ position:absolute; z-index:2; right:var(--gut); font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; color:var(--fg); opacity:.8; border:1px solid var(--line-2); padding:5px 9px; background:var(--glass); pointer-events:none; }
+  .hero .imgnote{ top:calc(132px + env(safe-area-inset-top,0px)); }
+  .deploy .imgnote{ top:24px; }
   .unit-img{ width:100%; height:auto; filter:drop-shadow(0 40px 60px rgba(0,0,0,.6)); }
   .hot{ position:absolute; transform:translate(-50%,-50%); width:28px; height:28px; border-radius:50%; display:grid; place-items:center; }
   .hot::before{ content:""; width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-bg); }
@@ -446,16 +450,17 @@
 <main>
 <!-- ============ HERO ============ -->
 <section class="hero" id="home">
-  <div class="hero-media"><img src="../assets/product-drone-fleet.png" alt="FPV drone fleet deployed in front of the mobile production unit" fetchpriority="high"></div>
+  <div class="hero-media"><img src="../assets/product-drone-fleet.png" alt="FPV drone fleet deployed in front of the mobile production unit (concept image)" fetchpriority="high"></div>
+  <span class="imgnote">Concept image</span>
   <div class="scan"></div>
   <div class="hud" aria-hidden="true">
     <div>
-      <span class="live">UNIT 22G2 · ONLINE</span>
+      <span class="live">UNIT 22G2 · CONCEPT</span>
       <span>36.3624°N 127.3561°E · DAEJEON</span>
     </div>
     <div class="r">
       <span id="clock">KST --:--:--</span>
-      <span>FOUNDRY STATUS · DEPLOYABLE</span>
+      <span>FOUNDRY STATUS · IN DESIGN</span>
     </div>
   </div>
   <div class="reticle" aria-hidden="true"><i></i><i></i><i></i><i></i><span>TGT · FPV FRAME / ADDITIVE</span></div>
@@ -470,7 +475,7 @@
     <div class="hero-foot">
       <div>
         <p class="hero-ko">Turning field needs into <b>military capability</b>.</p>
-        <p class="hero-sub">KEONIX Labs is a KAIST faculty startup that helps the Korean military build, repair, and adapt its own drones, and keeps that capability from breaking down.</p>
+        <p class="hero-sub">KEONIX Labs is a KAIST faculty startup that helps the military build what it needs to acquire and operate drones at scale: a field base, right beside the units, that keeps drones resupplied, reconfigured and repaired. When needed, we add production hubs to scale up to mass production.</p>
       </div>
       <div class="hero-cta">
         <a href="#solution" class="btn solid">Explore the solution <span class="arr">→</span></a>
@@ -483,18 +488,18 @@
 <!-- ============ TICKER ============ -->
 <div class="ticker" aria-label="Key figures">
   <div class="ticker-track">
-    <div class="tk"><b>US$15.8B</b><span>Global military drone market (TAM, 2025)</span></div>
+    <div class="tk"><b>60,000</b><span>Training drones to be fielded in phases (by 2029)</span></div>
     <div class="tk"><b>70%+</b><span>Target production automation rate at PoC</span></div>
     <div class="tk"><b>±5%</b><span>Target repeatability tolerance in production</span></div>
-    <div class="tk"><b>2027</b><span>Training FPV drone field validation</span></div>
-    <div class="tk"><b>KAIST × CAU</b><span>Co-designing research teams</span></div>
-    <div class="tk"><b>POCHEON</b><span>National drone hub partner</span></div>
-    <div class="tk" aria-hidden="true"><b>US$15.8B</b><span>Global military drone market (TAM, 2025)</span></div>
+    <div class="tk"><b>Dec 2026</b><span>Pocheon field validation begins (training drones first)</span></div>
+    <div class="tk"><b>KAIST · CAU · JNU · INU</b><span>Joint research team</span></div>
+    <div class="tk"><b>POCHEON</b><span>Drone validation hub partner</span></div>
+    <div class="tk" aria-hidden="true"><b>60,000</b><span>Training drones to be fielded in phases (by 2029)</span></div>
     <div class="tk" aria-hidden="true"><b>70%+</b><span>Target production automation rate at PoC</span></div>
     <div class="tk" aria-hidden="true"><b>±5%</b><span>Target repeatability tolerance in production</span></div>
-    <div class="tk" aria-hidden="true"><b>2027</b><span>Training FPV drone field validation</span></div>
-    <div class="tk" aria-hidden="true"><b>KAIST × CAU</b><span>Co-designing research teams</span></div>
-    <div class="tk" aria-hidden="true"><b>POCHEON</b><span>National drone hub partner</span></div>
+    <div class="tk" aria-hidden="true"><b>Dec 2026</b><span>Pocheon field validation begins (training drones first)</span></div>
+    <div class="tk" aria-hidden="true"><b>KAIST · CAU · JNU · INU</b><span>Joint research team</span></div>
+    <div class="tk" aria-hidden="true"><b>POCHEON</b><span>Drone validation hub partner</span></div>
   </div>
 </div>
 
@@ -502,13 +507,13 @@
 <section class="sec" id="mission">
   <div class="wrap">
     <p class="eyebrow">Mission &amp; Vision</p>
-    <p class="statement" id="statement">Drones are not equipment to be preserved but <span class="hl">consumables to be used, lost, and replenished</span>. Drone power lasts only if building, repair, and training continue after the airframes are fielded.</p>
+    <p class="statement" id="statement">Drones are <span class="hl">consumed whole, or part by part and module by module</span>. Because they are expendable, ever-changing and tied to the field, mass acquisition must come with resupply, reconfiguration and field repair to keep drone forces ready.</p>
 
     <div class="mission-grid rv">
       <div>
         <span class="mono">Vision</span>
         <h3>Drone capability owned by the military</h3>
-        <p>We help the military gain the ability to build, repair, and adapt the drones it needs, and to keep that ability running as people and threats change.</p>
+        <p>As the military acquires drones at scale, we help it build the capability to keep them resupplied, reconfigured and repaired beside the units — and to sustain and advance that capability as people and threats change.</p>
       </div>
       <div>
         <span class="mono">Why now</span>
@@ -518,10 +523,10 @@
     </div>
 
     <div class="stages">
-      <div class="stage rv"><div class="num">01</div><h4>Prove</h4><p>KEONIX Labs first designs, builds, and tests a solution to a field need to confirm it works.</p></div>
-      <div class="stage rv"><div class="num">02</div><h4>Transfer</h4><p>Hands-on courses and instructor training hand build-and-repair methods to the military.</p></div>
-      <div class="stage rv"><div class="num">03</div><h4>Self-reliance</h4><p>Units carry out approved building, testing, and repair work on their own.</p></div>
-      <div class="stage rv"><div class="num">04</div><h4>Sustain &amp; advance</h4><p>Instructor recertification, updated materials, automation, and new airframes keep the capability going.</p></div>
+      <div class="stage rv"><div class="num">01</div><h4>Build</h4><p>We rapidly configure and test modular solutions to field requirements.</p></div>
+      <div class="stage rv"><div class="num">02</div><h4>Codify</h4><p>Validated configurations become a library of recipes, print files, test data and repair procedures.</p></div>
+      <div class="stage rv"><div class="num">03</div><h4>Transfer</h4><p>Delivered as technology packages with hands-on training and instructor development — field-type (units build and repair) or hub-type (units do basic maintenance, the hub repairs), as each unit needs.</p></div>
+      <div class="stage rv"><div class="num">04</div><h4>Sustain &amp; advance</h4><p>Instructor recertification, updated materials, automation, and new airframes keep the capability going — and more production hubs when scale is needed.</p></div>
     </div>
   </div>
 </section>
@@ -534,7 +539,7 @@
         <p class="eyebrow">Solution</p>
         <h2 class="title">Easy to fix,<br>built to keep flying</h2>
       </div>
-      <p class="lede">With additive manufacturing and modular design, we help units build, repair, and adapt their drones with ease. Fabrication, repair, training, and parts supply come as one package, so a broken airframe never stops training.</p>
+      <p class="lede">With flexible production (3D printing, custom CNC and laser cutting) and modular design, we help units build, repair, and adapt their drones with ease. Fabrication, repair, training, and parts supply come as one package, so a broken airframe never stops training.</p>
     </div>
 
     <div class="foundry">
@@ -553,16 +558,16 @@
         <article class="axis rv">
           <span class="corner"></span>
           <span class="mono">Core 01</span>
-          <h3>Modular expendable drone</h3>
+          <h3>Modular drone frame</h3>
           <div class="en">Swap the frame, keep the electronics</div>
-          <p>Only the damaged main frame is reprinted and replaced, while the key electronics sit on one slide that moves to a new frame in a single step. Snap-fit parts assemble without tools.</p>
+          <p>We are validating a prototype that replaces an existing airframe's carbon frame with a 3D-printed modular frame and carries the original electronics over (1.43 kg · 7 h 25 min frame print). Only damaged parts are reprinted and replaced.</p>
         </article>
         <article class="axis rv">
           <span class="corner"></span>
           <span class="mono">Core 02</span>
-          <h3>Integrated parts management</h3>
-          <div class="en">One flow from part to print file</div>
-          <p>Part data and print settings are linked on one screen, from choosing a part to generating its print file. Even when people change, the same part can be made again under the same conditions.</p>
+          <h3>Technology library</h3>
+          <div class="en">Every validated build in one place</div>
+          <p>Recipes, print files, test data and repair procedures for every validated configuration in one place. Common elements are stored as adjustable recipes and offered within validated ranges, so the same part can be rebuilt under the same conditions even as people change.</p>
         </article>
       </div>
     </div>
@@ -571,9 +576,9 @@
       <div class="cap rv"><span class="idx">/01</span><h4>Build, test &amp; repair base</h4><p>We assess each unit's scope and set up 3D printers, repair benches, test equipment, and standard procedures.</p></div>
       <div class="cap rv"><span class="idx">/02</span><h4>Training courses</h4><p>Hands-on flying, basic repair, and part printing, plus instructor training that keeps skills in the unit.</p></div>
       <div class="cap rv"><span class="idx">/03</span><h4>Custom frame development</h4><p>We analyze field needs, then design, print, and flight-test modular frames.</p></div>
-      <div class="cap rv"><span class="idx">/04</span><h4>Domestic parts supply</h4><p>Electronics, frames, and consumables from a domestic supply chain, as parts or finished drones.</p></div>
+      <div class="cap rv"><span class="idx">/04</span><h4>Domestic parts &amp; validated builds</h4><p>We print and assemble validated configurations at our hubs and supply them as parts, modules or complete airframes. Parts that need localization we propose as joint public–military–industry–academia projects and develop with parts makers.</p></div>
       <div class="cap rv"><span class="idx">/05</span><h4>Repair &amp; tech support</h4><p>Alternative part reviews, motor adapters, and failure history tracking lighten the repair load.</p></div>
-      <div class="cap rv"><span class="idx">/06</span><h4>Automation &amp; mobile production</h4><p>Proven processes move to robot-arm automation and, when needed, to mobile production units.</p></div>
+      <div class="cap rv"><span class="idx">/06</span><h4>Automation &amp; mobile production</h4><p>Proven processes move to robot-arm automation and, when needed, to mobile production units. We also add production hubs to scale up to mass production.</p></div>
     </div>
   </div>
 </section>
@@ -612,11 +617,12 @@
 
 <section class="deploy" aria-label="Field deployment">
   <img src="../assets/product-field-deployed.png" alt="Mobile production unit deployed on an airfield at dusk" loading="lazy" id="deployImg">
+  <span class="imgnote">Concept image</span>
   <div class="wrap deploy-body">
     <p class="eyebrow">Field Deployment</p>
     <h2 class="display">Deploy<br>anywhere<span>.</span></h2>
     <div class="deploy-row">
-      <p>Where needed, production units deploy to forward positions.</p>
+      <p>Where needed, production units deploy to forward positions.<br>Standard parts and modules are mass-produced in the rear; frames, adapters and mission modules are made flexibly at hubs and in the field.</p>
       <div class="deploy-tags"><span class="tag">FORWARD BASE</span><span class="tag">AIRFIELD</span><span class="tag">TRAINING SITE</span></div>
     </div>
   </div>
@@ -629,8 +635,9 @@
       <div>
         <p class="eyebrow">Project Gaecheon · 開天</p>
         <h2 class="title">Project Gaecheon<br>Drone capability loop</h2>
+        <p class="subtitle">Pocheon field validation program</p>
       </div>
-      <p class="lede">Project Gaecheon puts the drone capability system KEONIX Labs envisions into practice in Pocheon. We co-develop training, custom fabrication, and build-and-repair facilities, work with units stationed in the Pocheon area, and link with the Drone Operations Command founded in Pocheon (being reorganized as the Defense Drone Headquarters) to build one integrated hub where everything from design to training and feedback happens in one place.</p>
+      <p class="lede">Project Gaecheon puts the drone capability system KEONIX Labs envisions into practice in Pocheon. We co-develop training, custom fabrication, and build-and-repair facilities, work with units stationed in the Pocheon area, and seek ties with the Defense Drone Headquarters (launched Nov 2026) and other military drone organizations to build one integrated hub where everything from design to training and feedback happens in one place.</p>
     </div>
 
     <div class="cycle">
@@ -644,16 +651,16 @@
         <div class="ring-core">
           <div>
             <div class="display" id="ringNum">01</div>
-            <div class="mono" id="ringEn">DESIGN</div>
+            <div class="mono" id="ringEn">FIELD NEEDS</div>
           </div>
         </div>
       </div>
 
       <div>
         <div class="stepcard" aria-live="polite">
-          <span class="mono" id="stepTag">01 / DESIGN</span>
-          <h3 id="stepTitle">Design</h3>
-          <p id="stepDesc">Define mission requirements from a central database</p>
+          <span class="mono" id="stepTag">01 / FIELD NEEDS</span>
+          <h3 id="stepTitle">Field requirements (military · industry)</h3>
+          <p id="stepDesc">Identify operation, repair and modification needs of nearby units</p>
         </div>
         <div class="steplist" id="stepList" aria-label="Choose a stage"></div>
       </div>
@@ -663,7 +670,7 @@
       <div class="coord"><b>STRATEGIC HUB</b>37.8949°N<br>127.2003°E<br>POCHEON</div>
       <div>
         <h3>Strategic Hub Partner · Pocheon City</h3>
-        <p>Selected two years in a row for the Ministry of Land, Infrastructure and Transport's Drone Demonstration City program, Pocheon is our execution base, jointly developing an advanced domestic drone industrial complex. The Pocheon National Drone Hub, with additive manufacturing facilities, an AR/VR training ground, and integrated test airspace, is the engine of this loop.</p>
+        <p>Designated twice as a MOLIT Drone Special Free Zone (2021, 2023) and selected for the Drone Demonstration City program, Pocheon is our execution base, jointly developing an advanced domestic drone industrial complex. The Pocheon Drone Validation Hub — with additive manufacturing and a training site opening in December 2026, linked to Pocheon's test airspace — will be the engine of this loop.</p>
         <div class="ref">
           <span class="mono">Reference · 2026.04.21</span>
           <h4>MOU with Pocheon City · 3D-printing-based drone production technology and talent development</h4>
@@ -671,6 +678,7 @@
             <li>Areas: drone industry planning and operation, technology development and infrastructure, joint national and defense projects, drone education programs</li>
             <li>Training site and production base inside Gyeonggi Daejin Techno Park</li>
             <li>Pocheon Training Center scheduled to open in December 2026</li>
+            <li>Oct 30, 2026 — Trilateral MOU with Pocheon City and KAIST Office of Technology Value Creation</li>
           </ul>
         </div>
       </div>
@@ -683,7 +691,7 @@
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <p class="eyebrow">Scaling-Up Roadmap</p>
+        <p class="eyebrow">Business Roadmap · Scaling-Up</p>
         <h2 class="title">By 2035, leading<br>K-Defense drones</h2>
       </div>
       <p class="lede">We grow from pilot (training &amp; evaluation) → procurement &amp; center expansion → scale-up, using domestic procurement as a springboard for export packages.</p>
@@ -758,7 +766,7 @@
 
     <div class="advisors rv">
       <span class="mono">Advisors &amp; Network</span>
-      <span>Advisors in military operations, defense procurement, aviation certification and academia, plus legal, finance and engineering experts.</span>
+      <span>Advisors in military operations, defense procurement, aviation certification and academia, a research network including Chungnam National University, plus legal, finance and engineering experts.</span>
     </div>
 
     <div class="staff" id="staff">
@@ -823,7 +831,7 @@
       </dl>
       <div class="contact-cta">
         <p class="lead">We welcome inquiries from investors, military &amp; government partners, and media.</p>
-        <p>Whether it's an IR deck request, a collaboration proposal, or a visit to the Pocheon Drone Hub, email us and we'll get back to you promptly.</p>
+        <p>Whether it's an IR deck request, a collaboration proposal, or a visit to our Pocheon center, email us and we'll get back to you promptly.</p>
         <a href="mailto:contact@keonix.co.kr" class="btn solid">Send an email <span class="arr">→</span></a>
       </div>
     </div>
@@ -1058,12 +1066,12 @@
 
   /* ---- gaecheon ring ---- */
   var steps = [
-    ['DESIGN','Design','Define mission requirements from a central database'],
-    ['MANUFACTURE','Manufacture','Rapid prototyping and production across distributed facilities'],
-    ['TEST & VALIDATE','Test & Validate','Realistic scenario testing at the Pocheon hub'],
-    ['DEPLOY','Deploy','Field validated systems to operational units'],
-    ['TRAIN','Train','Soldiers master system operation in AR/VR environments'],
-    ['FEEDBACK','Feedback · Redesign','Collect operational data and improve designs immediately']
+    ['FIELD NEEDS','Field requirements (military · industry)','Identify operation, repair and modification needs of nearby units'],
+    ['CONFIGURE','Design & rapid configuration (industry · academia)','Configure modules and replacement parts from the library, co-designing with universities and institutes'],
+    ['PRODUCE','Flexible production (industry)','Rapid prototyping and production at the hub with 3D printing, CNC and laser cutting'],
+    ['TEST & VALIDATE','Airspace test & validation (military · government · industry)','Flight and performance validation in Pocheon\'s test airspace'],
+    ['DEPLOY','Deployment & training (military)','Deploy validated systems to field units, with education and training'],
+    ['FEEDBACK','Feedback & library update','Add operational data to the library to improve designs and configuration ranges']
   ];
   var g = document.getElementById('ringNodes'), list = document.getElementById('stepList'), ns = 'http://www.w3.org/2000/svg';
   var nodes = [], tabs = [], cur = 0, timer = null, R = 160, circ = 2 * Math.PI * R, arc = document.getElementById('ringArc');
