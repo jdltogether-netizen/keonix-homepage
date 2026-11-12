@@ -65,6 +65,8 @@
   .display{ font-family:var(--f-display); font-weight:700; text-transform:uppercase; line-height:.9; letter-spacing:-.005em; }
   h2.title{ font-size:clamp(28px, 3.6vw, 48px); font-weight:700; line-height:1.2; letter-spacing:-.025em; text-wrap:balance; }
   .subtitle{ margin-top:12px; font-family:var(--f-mono); font-size:13px; letter-spacing:.08em; color:var(--accent-2); }
+  p, li, dd{ text-wrap:pretty; }
+  :lang(ko) p, :lang(ko) li, :lang(ko) dd{ word-break:keep-all; }
   .lede{ color:var(--muted); font-size:clamp(16px,1.25vw,18px); max-width:62ch; }
 
   /* ---------- boot loader ---------- */
@@ -422,7 +424,7 @@
 
 <div class="boot" id="boot" aria-hidden="true">
   <div class="boot-inner">
-    <div class="boot-row"><span>KEONIX // FOUNDRY OS</span><span>KR-DJN</span></div>
+    <div class="boot-row"><span>KEONIX // FIELD BASE OS</span><span>KR-DJN</span></div>
     <div class="boot-num" id="bootNum">000</div>
     <div class="boot-bar"><i id="bootBar"></i></div>
     <div class="boot-row"><span class="boot-log" id="bootLog">INITIALIZING SYSTEM</span><span>/100</span></div>
@@ -460,7 +462,7 @@
     </div>
     <div class="r">
       <span id="clock">KST --:--:--</span>
-      <span>FOUNDRY STATUS · IN DESIGN</span>
+      <span>MOBILE UNIT · IN DESIGN</span>
     </div>
   </div>
   <div class="reticle" aria-hidden="true"><i></i><i></i><i></i><i></i><span>TGT · FPV FRAME / ADDITIVE</span></div>
@@ -513,20 +515,20 @@
       <div>
         <span class="mono">Vision</span>
         <h3>군이 주체가 되는 드론 역량</h3>
-        <p>군이 드론을 대량으로 들여오는 만큼, 부대 곁에서 계속 채우고·바꾸고·고칠 수 있는 역량을 갖추도록 돕고, 인력과 위협이 바뀌어도 그 역량이 유지·고도화되도록 함께합니다.</p>
+        <p>군이 드론을 대량으로 들여오는 만큼, 부대 곁에서 계속 채우고·바꾸고·고치는 역량을 갖추고, 인력과 위협이 바뀌어도 이를 유지·고도화하도록 돕습니다.</p>
       </div>
       <div>
         <span class="mono">Why now</span>
         <h3>드론은 소모품입니다</h3>
-        <p>미 국방장관은 2025년 7월 지침에서 소형 드론을 내구 장비가 아닌 소모품으로 분류하라고 지시했습니다. 쓰고 잃으면 바로 보충해야 하는 만큼, 보급 이후의 제작·정비·교육 체계가 전력을 좌우합니다.</p>
+        <p>미 국방장관은 2025년 7월 지침에서 소형 드론을 소모품으로 분류하도록 했습니다. 잃으면 바로 보충해야 하는 만큼, 보급 이후의 제작·정비·교육 체계가 전력을 좌우합니다.</p>
       </div>
     </div>
 
     <div class="stages">
       <div class="stage rv"><div class="num">01</div><h4>구현</h4><p>현장 소요를 KEONIX Labs가 모듈로 신속히 구성·시험해 효과를 확인합니다.</p></div>
       <div class="stage rv"><div class="num">02</div><h4>체계화</h4><p>검증된 조합을 라이브러리(조합 레시피·출력 파일·시험 데이터·정비 절차)로 쌓습니다.</p></div>
-      <div class="stage rv"><div class="num">03</div><h4>이식</h4><p>기술 묶음 패키지와 실습 교육·교관 양성으로 군에 이식합니다. 부대 여건에 따라 현장형(부대가 직접 제작·정비) 또는 거점형(기본 정비는 부대, 수리는 거점)으로.</p></div>
-      <div class="stage rv"><div class="num">04</div><h4>유지·고도화</h4><p>교관 재인증, 자료 갱신, 자동화와 신규 기체 개발로 역량을 이어 가고, 필요하면 생산 거점을 늘려 대량 생산으로 확장합니다.</p></div>
+      <div class="stage rv"><div class="num">03</div><h4>이식</h4><p>기술 패키지와 실습 교육·교관 양성으로 군에 이식합니다. 부대 여건에 따라 현장형(부대가 제작·정비) 또는 거점형(수리는 거점)으로.</p></div>
+      <div class="stage rv"><div class="num">04</div><h4>유지·고도화</h4><p>교관 재인증, 자료 갱신, 자동화와 신규 기체 개발로 역량을 이어 가고, 필요하면 거점을 늘려 대량 생산으로 확장합니다.</p></div>
     </div>
   </div>
 </section>
@@ -539,7 +541,7 @@
         <p class="eyebrow">Solution</p>
         <h2 class="title">쉽게 고치고 계속 쓰는<br>드론 운용 솔루션</h2>
       </div>
-      <p class="lede">유연생산(3D 프린팅·맞춤형 CNC·레이저 커팅)과 모듈형 설계로 부대가 드론을 쉽게 만들고 고치고 바꿀 수 있게 돕습니다. 파손이 훈련 중단으로 이어지지 않도록 제작·정비·교육·부품 공급을 하나로 묶어 지원합니다.</p>
+      <p class="lede">유연생산(3D 프린팅·CNC·레이저 커팅)과 모듈형 설계로 부대가 드론을 쉽게 만들고 고치고 바꾸게 돕고, 제작·정비·교육·부품 공급을 하나로 묶어 지원합니다.</p>
     </div>
 
     <div class="foundry">
@@ -560,14 +562,14 @@
           <span class="mono">Core 01</span>
           <h3>모듈형 드론 프레임</h3>
           <div class="en">Modular Drone Frame</div>
-          <p>프레임은 바꾸고 전장품은 살립니다. 기존 기체의 카본 프레임을 3D 프린팅 모듈러 프레임으로 바꾸고 전장을 그대로 옮겨 싣는 시제기를 만들어 검증하고 있습니다(1.43kg · 프레임 출력 7시간 25분). 손상된 부위만 다시 출력해 교체합니다.</p>
+          <p>프레임은 바꾸고 전장품은 살립니다. 카본 프레임을 3D 프린팅 모듈러 프레임으로 바꿔 전장을 옮겨 싣는 시제기를 검증 중입니다(1.43kg · 출력 7시간 25분). 스냅핏 구조로 공구 없이, 파손된 부위만 빠르고 쉽게 교체합니다.</p>
         </article>
         <article class="axis rv">
           <span class="corner"></span>
           <span class="mono">Core 02</span>
           <h3>기술 라이브러리</h3>
           <div class="en">Technology Library</div>
-          <p>검증된 조합의 레시피·출력 파일·시험 데이터·정비 절차를 한곳에 쌓습니다. 공통 요소는 변형 가능한 레시피로 저장해 검증된 조합 범위 안에서 골라 쓰게 하고, 인력이 바뀌어도 같은 부품을 같은 조건으로 다시 만들 수 있습니다.</p>
+          <p>검증된 조합의 레시피·출력 파일·시험 데이터·정비 절차를 한곳에 쌓아, 인력이 바뀌어도 같은 부품을 같은 조건으로 다시 만듭니다.</p>
         </article>
       </div>
     </div>
@@ -576,9 +578,9 @@
       <div class="cap rv"><span class="idx">/01</span><h4>제작·시험·정비 기반 구축</h4><p>부대 업무 범위를 진단하고 3D 프린터·정비 벤치·시험장비와 표준 작업절차를 갖춥니다.</p></div>
       <div class="cap rv"><span class="idx">/02</span><h4>교육과정 운영</h4><p>조종·기본 정비·출력 부품 제작 실습과 교관 양성으로 숙련을 조직에 남깁니다.</p></div>
       <div class="cap rv"><span class="idx">/03</span><h4>맞춤 프레임 개발</h4><p>현장 요구를 분석해 모듈형 프레임을 설계·출력하고 비행시험까지 마칩니다.</p></div>
-      <div class="cap rv"><span class="idx">/04</span><h4>국산 부품·검증 조합 공급</h4><p>검증된 조합을 거점에서 출력·조립해 부품·모듈 또는 완성 기체로 공급하고, 국산화가 필요한 부품은 민·관·군·학 과제로 제안해 부품 기업과 함께 개발합니다.</p></div>
+      <div class="cap rv"><span class="idx">/04</span><h4>국산 부품·검증 조합 공급</h4><p>검증된 조합을 부품·모듈·완성 기체로 공급하고, 국산화 부품은 민·관·군·학 과제로 함께 개발합니다.</p></div>
       <div class="cap rv"><span class="idx">/05</span><h4>수리·기술 지원</h4><p>대체 부품 검토, 모터 규격 어댑터, 고장 이력 관리로 정비 부담을 줄입니다.</p></div>
-      <div class="cap rv"><span class="idx">/06</span><h4>자동화·이동형 생산</h4><p>검증된 공정을 로봇팔 기반으로 자동화하고, 필요하면 이동형 생산 유닛으로 확장합니다. 생산 거점을 늘려 대량 생산으로도 확장합니다.</p></div>
+      <div class="cap rv"><span class="idx">/06</span><h4>자동화·이동형 생산</h4><p>검증된 공정을 로봇팔로 자동화하고, 이동형 생산 유닛과 거점 확장으로 대량 생산까지 넓힙니다.</p></div>
     </div>
   </div>
 </section>
@@ -591,7 +593,7 @@
         <p class="eyebrow">Next Stage</p>
         <h2 class="title">검증된 솔루션은<br>이동형 생산 유닛으로</h2>
       </div>
-      <p class="lede">현장에서 검증된 제작·정비 공정을 자동화하고, 적층제조·조립·검사 설비를 표준 컨테이너에 담아 어디든 전개할 수 있는 이동형 생산 유닛까지 솔루션을 고도화해 나갑니다.</p>
+      <p class="lede">현장에서 검증된 제작·정비 공정을 자동화하고, 적층제조·조립·검사 설비를 표준 컨테이너에 담아 어디든 전개하는 이동형 생산 유닛까지 솔루션을 고도화합니다.</p>
     </div>
 
     <div class="unit-wrap rv">
@@ -622,7 +624,7 @@
     <p class="eyebrow">Field Deployment</p>
     <h2 class="display">Deploy<br>anywhere<span>.</span></h2>
     <div class="deploy-row">
-      <p>필요한 곳이라면 전방 거점까지 생산 유닛을 전개합니다.<br>표준 부품·모듈은 후방에서 대량으로, 프레임·어댑터·임무 모듈은 거점·현장에서 유연하게 만듭니다.</p>
+      <p>필요한 곳이라면 전방 거점까지 생산 유닛을 전개합니다. 표준 부품·모듈은 후방에서 대량으로, 프레임·어댑터·임무 모듈은 거점·현장에서 유연하게 만듭니다.</p>
       <div class="deploy-tags"><span class="tag">FORWARD BASE</span><span class="tag">AIRFIELD</span><span class="tag">TRAINING SITE</span></div>
     </div>
   </div>
@@ -637,7 +639,7 @@
         <h2 class="title">프로젝트 개천(開天)<br>드론 역량 순환 체계</h2>
         <p class="subtitle">포천 실증 사업</p>
       </div>
-      <p class="lede">‘프로젝트 개천’은 KEONIX Labs가 구상하는 드론 역량 체계를 포천시에서 실제로 구현하는 프로젝트입니다. 교육, 맞춤형 제작, 제작·정비 설비를 함께 연구개발하고, 포천 지역 주둔 부대와 협업하고, 국방드론본부(2026.11 출범) 등 군 드론 조직과의 연계를 모색하며 설계부터 훈련·피드백까지 한곳에서 이어지는 통합 거점을 구축합니다.</p>
+      <p class="lede">‘프로젝트 개천’은 KEONIX Labs의 드론 역량 체계를 포천에서 실증하는 사업입니다. 지역 주둔 부대와 협업하고 국방드론본부(2026.11 출범) 등과의 연계를 모색하며, 설계부터 훈련·피드백까지 이어지는 통합 거점을 만듭니다.</p>
     </div>
 
     <div class="cycle">
@@ -694,7 +696,7 @@
         <p class="eyebrow">사업 로드맵 · Scaling-Up Roadmap</p>
         <h2 class="title">2035년, K-Defense 드론<br>생태계 선도 기업으로</h2>
       </div>
-      <p class="lede">파일럿(훈련·평가) → 조달·센터 확장 → 스케일업 순으로 성장하며, 국내 조달을 발판으로 해외 수출 패키지를 준비합니다.</p>
+      <p class="lede">파일럿(훈련·평가) → 조달·센터 확장 → 스케일업 순으로 성장하며, 국내 조달을 발판으로 해외 수출 패키지까지 준비해 나갑니다.</p>
     </div>
 
     <div class="road">
@@ -775,7 +777,7 @@
           <p class="eyebrow">Participating Personnel</p>
           <h2 class="title">참여 인력</h2>
         </div>
-        <p class="lede">적층가공 표준부터 스마트팩토리, 방산 사업 관리까지 각 분야 실무 전문가가 KEONIX의 실행을 뒷받침합니다.</p>
+        <p class="lede">적층가공 표준부터 스마트팩토리, 방산 사업 관리까지 실무 전문가가 함께합니다.</p>
       </div>
       <div class="staff-grid rv">
         <div class="person">
@@ -860,7 +862,7 @@
   /* ---- boot loader (first visit per session) ---- */
   var boot = document.getElementById('boot'), num = document.getElementById('bootNum'),
       bar = document.getElementById('bootBar'), log = document.getElementById('bootLog');
-  var logs = ['INITIALIZING SYSTEM','LOADING FOUNDRY MODULES','CALIBRATING BUILD PLATE','LINKING FIELD UNITS','READY'];
+  var logs = ['INITIALIZING SYSTEM','LOADING TECH LIBRARY','SYNCING VALIDATED BUILDS','LINKING FIELD UNITS','READY'];
   if (reduce || ssGet('kx-booted')) { boot.style.display = 'none'; requestAnimationFrame(function(){ root.classList.add('ready'); }); }
   else {
     ssSet('kx-booted', '1');
@@ -1043,16 +1045,16 @@
   /* ---- foundry terminal ---- */
   var term = document.getElementById('term');
   var tl = [
-    ['ac','> mission.load("FPV / TRAINING")'],
-    ['','  requirements → frame class 5" · modular arms'],
-    ['ac','> ai.design.generate(variants=24)'],
-    ['','  topology optimized · best candidate #07'],
+    ['ac','> field.request("FPV / TRAINING")'],
+    ['','  need → arm replacement · frame class 5"'],
+    ['ac','> library.match(validated=true)'],
+    ['','  recipe FX5-ARM · 3 validated builds'],
     ['ac','> slicer.run(frame_x5, layer=0.2mm)'],
     ['ok','  ✓ toolpath ready · 120 layers'],
-    ['ac','> foundry.queue(unit="22G2-A")'],
+    ['ac','> hub.queue(site="POCHEON")'],
     ['ok','  ✓ build started'],
     ['ac','> qa.inspect(tolerance=±5%)'],
-    ['ok','  ✓ pass · dispatch to assembly cell']
+    ['ok','  ✓ pass · ready for field swap']
   ];
   var ti = 0, buf = [];
   function termTick(){

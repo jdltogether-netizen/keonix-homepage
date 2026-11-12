@@ -65,6 +65,8 @@
   .display{ font-family:var(--f-display); font-weight:700; text-transform:uppercase; line-height:.9; letter-spacing:-.005em; }
   h2.title{ font-size:clamp(28px, 3.6vw, 48px); font-weight:700; line-height:1.2; letter-spacing:-.025em; text-wrap:balance; }
   .subtitle{ margin-top:12px; font-family:var(--f-mono); font-size:13px; letter-spacing:.08em; color:var(--accent-2); }
+  p, li, dd{ text-wrap:pretty; }
+  :lang(ko) p, :lang(ko) li, :lang(ko) dd{ word-break:keep-all; }
   .lede{ color:var(--muted); font-size:clamp(16px,1.25vw,18px); max-width:62ch; }
 
   /* ---------- boot loader ---------- */
@@ -422,7 +424,7 @@
 
 <div class="boot" id="boot" aria-hidden="true">
   <div class="boot-inner">
-    <div class="boot-row"><span>KEONIX // FOUNDRY OS</span><span>KR-DJN</span></div>
+    <div class="boot-row"><span>KEONIX // FIELD BASE OS</span><span>KR-DJN</span></div>
     <div class="boot-num" id="bootNum">000</div>
     <div class="boot-bar"><i id="bootBar"></i></div>
     <div class="boot-row"><span class="boot-log" id="bootLog">INITIALIZING SYSTEM</span><span>/100</span></div>
@@ -460,7 +462,7 @@
     </div>
     <div class="r">
       <span id="clock">KST --:--:--</span>
-      <span>FOUNDRY STATUS · IN DESIGN</span>
+      <span>MOBILE UNIT · IN DESIGN</span>
     </div>
   </div>
   <div class="reticle" aria-hidden="true"><i></i><i></i><i></i><i></i><span>TGT · FPV FRAME / ADDITIVE</span></div>
@@ -513,20 +515,20 @@
       <div>
         <span class="mono">Vision</span>
         <h3>Drone capability owned by the military</h3>
-        <p>As the military acquires drones at scale, we help it build the capability to keep them resupplied, reconfigured and repaired beside the units — and to sustain and advance that capability as people and threats change.</p>
+        <p>As the military acquires drones at scale, we help it build the capability to resupply, reconfigure and repair them beside the units — and to sustain and advance it as people and threats change.</p>
       </div>
       <div>
         <span class="mono">Why now</span>
         <h3>Drones are consumables</h3>
-        <p>In a July 2025 memo, the U.S. Secretary of Defense directed that small drones be classified as consumables rather than durable equipment. When drones are used up and replaced like ammunition, the system for building, repair, and training after fielding decides combat power.</p>
+        <p>A July 2025 U.S. Secretary of Defense memo classified small drones as consumables. Since lost drones must be replaced at once, the system for building, repair and training after fielding decides combat power.</p>
       </div>
     </div>
 
     <div class="stages">
       <div class="stage rv"><div class="num">01</div><h4>Build</h4><p>We rapidly configure and test modular solutions to field requirements.</p></div>
-      <div class="stage rv"><div class="num">02</div><h4>Codify</h4><p>Validated configurations become a library of recipes, print files, test data and repair procedures.</p></div>
-      <div class="stage rv"><div class="num">03</div><h4>Transfer</h4><p>Delivered as technology packages with hands-on training and instructor development — field-type (units build and repair) or hub-type (units do basic maintenance, the hub repairs), as each unit needs.</p></div>
-      <div class="stage rv"><div class="num">04</div><h4>Sustain &amp; advance</h4><p>Instructor recertification, updated materials, automation, and new airframes keep the capability going — and more production hubs when scale is needed.</p></div>
+      <div class="stage rv"><div class="num">02</div><h4>Codify</h4><p>Validated builds become a library of recipes, print files, test data and repair procedures.</p></div>
+      <div class="stage rv"><div class="num">03</div><h4>Transfer</h4><p>Technology packages, hands-on training and instructors — field-type (units build and repair) or hub-type (the hub repairs), as each unit needs.</p></div>
+      <div class="stage rv"><div class="num">04</div><h4>Sustain &amp; advance</h4><p>Instructor recertification, updated materials, automation, and new airframes keep the capability going — and more hubs when scale is needed.</p></div>
     </div>
   </div>
 </section>
@@ -539,7 +541,7 @@
         <p class="eyebrow">Solution</p>
         <h2 class="title">Easy to fix,<br>built to keep flying</h2>
       </div>
-      <p class="lede">With flexible production (3D printing, custom CNC and laser cutting) and modular design, we help units build, repair, and adapt their drones with ease. Fabrication, repair, training, and parts supply come as one package, so a broken airframe never stops training.</p>
+      <p class="lede">With flexible production (3D printing, CNC, laser cutting) and modular design, we help units build, repair and adapt drones with ease — fabrication, repair, training and parts supply in one package.</p>
     </div>
 
     <div class="foundry">
@@ -560,25 +562,25 @@
           <span class="mono">Core 01</span>
           <h3>Modular drone frame</h3>
           <div class="en">Swap the frame, keep the electronics</div>
-          <p>We are validating a prototype that replaces an existing airframe's carbon frame with a 3D-printed modular frame and carries the original electronics over (1.43 kg · 7 h 25 min frame print). Only damaged parts are reprinted and replaced.</p>
+          <p>We are validating a prototype that swaps the carbon frame for a 3D-printed modular frame and carries the electronics over (1.43 kg · 7 h 25 min print). With snap-fit construction, only damaged parts are swapped, quickly and easily, without tools.</p>
         </article>
         <article class="axis rv">
           <span class="corner"></span>
           <span class="mono">Core 02</span>
           <h3>Technology library</h3>
           <div class="en">Every validated build in one place</div>
-          <p>Recipes, print files, test data and repair procedures for every validated configuration in one place. Common elements are stored as adjustable recipes and offered within validated ranges, so the same part can be rebuilt under the same conditions even as people change.</p>
+          <p>Recipes, print files, test data and repair procedures for every validated build, in one place, so the same part can be rebuilt under the same conditions even as people change.</p>
         </article>
       </div>
     </div>
 
     <div class="caps">
       <div class="cap rv"><span class="idx">/01</span><h4>Build, test &amp; repair base</h4><p>We assess each unit's scope and set up 3D printers, repair benches, test equipment, and standard procedures.</p></div>
-      <div class="cap rv"><span class="idx">/02</span><h4>Training courses</h4><p>Hands-on flying, basic repair, and part printing, plus instructor training that keeps skills in the unit.</p></div>
+      <div class="cap rv"><span class="idx">/02</span><h4>Training courses</h4><p>Hands-on courses in flying, basic repair and part printing, plus instructor training that keeps skills in the unit.</p></div>
       <div class="cap rv"><span class="idx">/03</span><h4>Custom frame development</h4><p>We analyze field needs, then design, print, and flight-test modular frames.</p></div>
-      <div class="cap rv"><span class="idx">/04</span><h4>Domestic parts &amp; validated builds</h4><p>We print and assemble validated configurations at our hubs and supply them as parts, modules or complete airframes. Parts that need localization we propose as joint public–military–industry–academia projects and develop with parts makers.</p></div>
+      <div class="cap rv"><span class="idx">/04</span><h4>Domestic parts &amp; validated builds</h4><p>Validated builds as parts, modules or full airframes; localization parts are co-developed in public–military–industry–academia projects.</p></div>
       <div class="cap rv"><span class="idx">/05</span><h4>Repair &amp; tech support</h4><p>Alternative part reviews, motor adapters, and failure history tracking lighten the repair load.</p></div>
-      <div class="cap rv"><span class="idx">/06</span><h4>Automation &amp; mobile production</h4><p>Proven processes move to robot-arm automation and, when needed, to mobile production units. We also add production hubs to scale up to mass production.</p></div>
+      <div class="cap rv"><span class="idx">/06</span><h4>Automation &amp; mobile production</h4><p>Proven processes move to robot-arm automation, then to mobile units and more hubs for mass production.</p></div>
     </div>
   </div>
 </section>
@@ -622,7 +624,7 @@
     <p class="eyebrow">Field Deployment</p>
     <h2 class="display">Deploy<br>anywhere<span>.</span></h2>
     <div class="deploy-row">
-      <p>Where needed, production units deploy to forward positions.<br>Standard parts and modules are mass-produced in the rear; frames, adapters and mission modules are made flexibly at hubs and in the field.</p>
+      <p>Where needed, production units deploy to forward positions. Standard parts and modules are mass-produced in the rear; frames, adapters and mission modules are made flexibly at hubs and in the field.</p>
       <div class="deploy-tags"><span class="tag">FORWARD BASE</span><span class="tag">AIRFIELD</span><span class="tag">TRAINING SITE</span></div>
     </div>
   </div>
@@ -637,7 +639,7 @@
         <h2 class="title">Project Gaecheon<br>Drone capability loop</h2>
         <p class="subtitle">Pocheon field validation program</p>
       </div>
-      <p class="lede">Project Gaecheon puts the drone capability system KEONIX Labs envisions into practice in Pocheon. We co-develop training, custom fabrication, and build-and-repair facilities, work with units stationed in the Pocheon area, and seek ties with the Defense Drone Headquarters (launched Nov 2026) and other military drone organizations to build one integrated hub where everything from design to training and feedback happens in one place.</p>
+      <p class="lede">Project Gaecheon is our field validation of the KEONIX drone capability system in Pocheon. Working with local units and seeking ties with the Defense Drone HQ (launched Nov 2026), we build one hub for design, training and feedback.</p>
     </div>
 
     <div class="cycle">
@@ -660,7 +662,7 @@
         <div class="stepcard" aria-live="polite">
           <span class="mono" id="stepTag">01 / FIELD NEEDS</span>
           <h3 id="stepTitle">Field requirements (military · industry)</h3>
-          <p id="stepDesc">Identify operation, repair and modification needs of nearby units</p>
+          <p id="stepDesc">Check nearby units' operation, repair and modification needs</p>
         </div>
         <div class="steplist" id="stepList" aria-label="Choose a stage"></div>
       </div>
@@ -670,7 +672,7 @@
       <div class="coord"><b>STRATEGIC HUB</b>37.8949°N<br>127.2003°E<br>POCHEON</div>
       <div>
         <h3>Strategic Hub Partner · Pocheon City</h3>
-        <p>Designated twice as a MOLIT Drone Special Free Zone (2021, 2023) and selected for the Drone Demonstration City program, Pocheon is our execution base, jointly developing an advanced domestic drone industrial complex. The Pocheon Drone Validation Hub — with additive manufacturing and a training site opening in December 2026, linked to Pocheon's test airspace — will be the engine of this loop.</p>
+        <p>Designated twice as a MOLIT Drone Special Free Zone (2021, 2023) and selected for the Drone Demonstration City program, Pocheon is our base for a domestic drone industrial complex. The Pocheon Drone Validation Hub — additive manufacturing and a training site opening in December 2026, linked to Pocheon's test airspace — will be the engine of this loop.</p>
         <div class="ref">
           <span class="mono">Reference · 2026.04.21</span>
           <h4>MOU with Pocheon City · 3D-printing-based drone production technology and talent development</h4>
@@ -694,7 +696,7 @@
         <p class="eyebrow">Business Roadmap · Scaling-Up</p>
         <h2 class="title">By 2035, leading<br>K-Defense drones</h2>
       </div>
-      <p class="lede">We grow from pilot (training &amp; evaluation) → procurement &amp; center expansion → scale-up, using domestic procurement as a springboard for export packages.</p>
+      <p class="lede">From pilot (training &amp; evaluation) → procurement &amp; center expansion → scale-up, with domestic procurement as a springboard to export packages.</p>
     </div>
 
     <div class="road">
@@ -775,7 +777,7 @@
           <p class="eyebrow">Participating Personnel</p>
           <h2 class="title">The people behind execution</h2>
         </div>
-        <p class="lede">From additive manufacturing standards to smart factories and defense program management, hands-on experts in each field power KEONIX's execution.</p>
+        <p class="lede">From additive manufacturing standards to smart factories and defense program management, hands-on experts work with us.</p>
       </div>
       <div class="staff-grid rv">
         <div class="person">
@@ -860,7 +862,7 @@
   /* ---- boot loader (first visit per session) ---- */
   var boot = document.getElementById('boot'), num = document.getElementById('bootNum'),
       bar = document.getElementById('bootBar'), log = document.getElementById('bootLog');
-  var logs = ['INITIALIZING SYSTEM','LOADING FOUNDRY MODULES','CALIBRATING BUILD PLATE','LINKING FIELD UNITS','READY'];
+  var logs = ['INITIALIZING SYSTEM','LOADING TECH LIBRARY','SYNCING VALIDATED BUILDS','LINKING FIELD UNITS','READY'];
   if (reduce || ssGet('kx-booted')) { boot.style.display = 'none'; requestAnimationFrame(function(){ root.classList.add('ready'); }); }
   else {
     ssSet('kx-booted', '1');
@@ -1043,16 +1045,16 @@
   /* ---- foundry terminal ---- */
   var term = document.getElementById('term');
   var tl = [
-    ['ac','> mission.load("FPV / TRAINING")'],
-    ['','  requirements → frame class 5" · modular arms'],
-    ['ac','> ai.design.generate(variants=24)'],
-    ['','  topology optimized · best candidate #07'],
+    ['ac','> field.request("FPV / TRAINING")'],
+    ['','  need → arm replacement · frame class 5"'],
+    ['ac','> library.match(validated=true)'],
+    ['','  recipe FX5-ARM · 3 validated builds'],
     ['ac','> slicer.run(frame_x5, layer=0.2mm)'],
     ['ok','  ✓ toolpath ready · 120 layers'],
-    ['ac','> foundry.queue(unit="22G2-A")'],
+    ['ac','> hub.queue(site="POCHEON")'],
     ['ok','  ✓ build started'],
     ['ac','> qa.inspect(tolerance=±5%)'],
-    ['ok','  ✓ pass · dispatch to assembly cell']
+    ['ok','  ✓ pass · ready for field swap']
   ];
   var ti = 0, buf = [];
   function termTick(){
@@ -1066,7 +1068,7 @@
 
   /* ---- gaecheon ring ---- */
   var steps = [
-    ['FIELD NEEDS','Field requirements (military · industry)','Identify operation, repair and modification needs of nearby units'],
+    ['FIELD NEEDS','Field requirements (military · industry)','Check nearby units\' operation, repair and modification needs'],
     ['CONFIGURE','Design & rapid configuration (industry · academia)','Configure modules and replacement parts from the library, co-designing with universities and institutes'],
     ['PRODUCE','Flexible production (industry)','Rapid prototyping and production at the hub with 3D printing, CNC and laser cutting'],
     ['TEST & VALIDATE','Airspace test & validation (military · government · industry)','Flight and performance validation in Pocheon\'s test airspace'],
